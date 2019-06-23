@@ -1,11 +1,21 @@
 /**
  * Created by niuxingxing on 2019/6/17.
  */
-// $(function(){
-//     $(".navbar-nav li").on("mouseenter",function () {
-//         $(this).addClass("active").siblings().removeClass("active");
-//     })
-// })
+$(function(){
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+     
+    });
+})
 var vue = new Vue({
     el:"#indexBox",
     data:{
@@ -17,32 +27,35 @@ var vue = new Vue({
                     {name:"党建考核",href:""},
                     {name:"支部考评",href:""},
                     {name:"学习强国",href:""}],
-        listObject:{dangJianNews:[],
+        listObject:{jiTuanNews:[],
                     dJList:[],
                     zBList:[],
                     huoDongList:[],
                     fanFuList:[],
-                    zuanTiList:[]
+                    zuanTiList:[],
+                    hotList:[],
+                    zuanHuoList:[],
         }
     },
     created:function () {
-        this.swiperInit();
-        this.newsListShow("dangJianNews",2,6);
+        this.newsListShow("hotList","",6,1);
+        this.newsListShow("jiTuanNews",2,7);
         this.newsListShow("dJList",3,6);
         this.getzhiBuData(10);
         this.getHuoDongData(6);
         this.newsListShow("fanFuList",5,7);
         this.newsListShow("zuanTiList",9,7);
+        this.newsListShow("zuanHuoList",10,4);
     },
     methods:{
         /*新闻列表*/
-        newsListShow:function (objectName,type,size) {
+        newsListShow:function (objectName,type,size,isHot) {
             var that = this;
             axios({
-                url:"http://106.14.183.96/red-caragana-railway/news/getNewsList.do?newsColumn="+type+"&page=1&size="+size,
+                url:"http://106.14.183.96/red-caragana-railway/news/getNewsList.do?newsColumn="+type+"&newsRecommend="+isHot+"&page=1&size="+size,
                 method:"GET",
             }).then(function(res){
-                console.log(res.data)
+                console.log("d",objectName)
                 if(res.data.code == 200){
                     that.listObject[objectName] = res.data.data;
                 }
@@ -80,20 +93,6 @@ var vue = new Vue({
             }).catch(function(err){
 
             })
-        },
-        swiperInit:function(){
-            var swiper = new Swiper('.swiper-container', {
-                spaceBetween: 30,
-                centeredSlides: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
         },
         navMethod:function (index) {
             $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");

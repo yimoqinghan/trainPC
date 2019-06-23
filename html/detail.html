@@ -21,14 +21,7 @@
             </div>
             <div class="collapse navbar-collapse" id="responsive-navbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">党建宣传</a></li>
-                    <li><a href="">活动相册</a></li>
-                    <li><a href="">支部动态</a></li>
-                    <li><a href="">微党课</a></li>
-                    <li><a href="">干部管理</a></li>
-                    <li><a href="">党建考核</a></li>
-                    <li><a href="">支部考评</a></li>
-                    <li><a href="">学习强国</a></li>
+                    <li :class="{active:index <= 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href">{{navObject.name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -36,12 +29,12 @@
     <div class="sec_content">
         <div class="row" style="background-color: #fff;border-bottom: 1px solid red;">
             <!--<img class="dang_top_img" src="../img/zT.jpg" />-->
-            <div class="dang_list_wrap col-md-8 col-md-offset-2 col-sm-12 ">
+            <div class="dang_list_wrap">
                 <p class="dang_title">
-                    <a>首页</a>
+                    <a href="/html/index.html">首页</a>
                     <span>/</span>
-                    <a>{{newsTypes[newsType]}}</a>
-                    <span>/</span>
+                    <a v-if="newsType != ''" :href="'/html/'+newsTypes[newsType].fileName+'/list.html'">{{newsTypes[newsType].name}}</a>
+                    <span v-if="newsType != ''">/</span>
                     <a>详情</a>
                 </p>
                 <!--<div class="content_title">专题活动</div>-->
@@ -80,11 +73,11 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="">人民网</a></li>
-                <li><a href="">中国共产党新闻网</a></li>
+                <li><a href="http://www.people.com.cn/">人民网</a></li>
+                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
                 <li><a href="">紫光阁</a></li>
-                <li><a href="">新华网</a></li>
-                <li><a href="">学习强国</a></li>
+                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
+                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
                 <li><a href="">陕煤集团</a></li>
                 <li><a href="">铁路物流公司</a></li>
             </ul>
@@ -105,7 +98,12 @@
     var vm = new Vue({
         el:"#detail",
         data:{
-            newsTypes:["集团新闻","党建要闻","支部动态","反腐倡廉","专题教育"],
+            newsTypes:[{name:"集团新闻",fileName:"jiTuanXinWen"},
+            {name:"党建要闻",fileName:"dangJianYaoWen"},
+            {name:"支部动态",fileName:"zhiBuDongTai"},
+            {name:"反腐倡廉",fileName:"fanFuChangLian"},
+            {name:"专题教育",fileName:"zhuanTiJiaoYu"},
+            {name:"专题活动",fileName:"zhuanTiHuoDong"}],
             detailObject:"",
             newsType:"",
         },

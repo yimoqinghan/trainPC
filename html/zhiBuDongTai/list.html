@@ -31,7 +31,7 @@
             <img class="dang_top_img" src="../../img/zB.jpg" />
             <div class="dang_list_wrap col-md-8 col-md-offset-2 col-sm-12 ">
                 <p class="dang_title">
-                    <a>首页</a>
+                    <a href="/html/index.html">首页</a>
                     <span>/</span>
                     <a>支部动态</a>
                 </p>
@@ -40,6 +40,7 @@
                     <ul>
                         
                     </ul>
+                    <div class="page" id="Page"></div>
                 </div>
             </div>
         </div>
@@ -52,7 +53,7 @@
                 <li><a>我的积分</a></li>
                 <li><a>我的信息</a></li>
             </ul>
-            <div class="center_fix" style="background-color: #e9e9e9;">
+            <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
                 <ul>
                     <li><a>·6月28日支部党员大会</a></li>
@@ -60,7 +61,7 @@
                     <li><a>·6月28日支部党员大会</a></li>
                 </ul>
                 <a>更多>></a>
-            </div>
+            </div> -->
             <div class="er_wrap">
                 <img src="../../img/xuexi_we.jpg" />
                 <p>下载党建云APP</p>
@@ -73,11 +74,11 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="">人民网</a></li>
-                <li><a href="">中国共产党新闻网</a></li>
+                <li><a href="http://www.people.com.cn/">人民网</a></li>
+                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
                 <li><a href="">紫光阁</a></li>
-                <li><a href="">新华网</a></li>
-                <li><a href="">学习强国</a></li>
+                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
+                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
                 <li><a href="">陕煤集团</a></li>
                 <li><a href="">铁路物流公司</a></li>
             </ul>
@@ -94,6 +95,7 @@
 <script src="../../js/axios.js"></script>
 <script src="../../js/qs.js"></script>
 <script src="../../js/vue.js"></script>
+<script src="../../js/MyPage.js"></script>
 <script>
     var vue = new Vue({
         el:"#zB",
@@ -107,9 +109,25 @@
                     {name:"支部考评",href:""},
                     {name:"学习强国",href:""}],
             listData:[],
+            page:0,
+            p_size:10,
+            totalPage:0,
         },
-        created:function(){
-            this.getData(1,10);
+        mounted:function(){
+            this.getData(1,this.p_size);
+        },
+        watch: {
+            totalPage:function(){
+                var that = this;
+                console.log(this.p_size)
+                P.initMathod({
+                    params: {elemId: '#Page',total:this.totalPage,pageSize:this.p_size},
+                    requestFunction: function (d_page,d_size) {
+                        that.getData(d_page,d_size);
+                        console.log(JSON.stringify(P.config));
+                    }
+                });
+            } 
         },
         methods: {
             navMethod:function (index) {
@@ -123,6 +141,7 @@
                 }).then(function(res){
                     if(res.data.code == 200){
                         that.listData = res.data.data;
+                        that.totalPage = res.data.total;
                     }
                     /*that.dangJianNews*/
                 }).catch(function(err){

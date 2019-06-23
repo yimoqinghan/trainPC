@@ -8,7 +8,7 @@
     <title>专题活动</title>
 </head>
 <body>
-<div class="box_container">
+<div class="box_container" id="zTH">
     <img src="../../img/top_bg_img.jpg" alt="" class="nav_bg">
     <nav class="navbar navbar-inverse">
         <div class="container">
@@ -21,14 +21,7 @@
             </div>
             <div class="collapse navbar-collapse" id="responsive-navbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">党建宣传</a></li>
-                    <li><a href="">活动相册</a></li>
-                    <li><a href="">支部动态</a></li>
-                    <li><a href="">微党课</a></li>
-                    <li><a href="">干部管理</a></li>
-                    <li><a href="">党建考核</a></li>
-                    <li><a href="">支部考评</a></li>
-                    <li><a href="">学习强国</a></li>
+                    <li :class="{active:index <= 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href">{{navObject.name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -36,9 +29,9 @@
     <div class="sec_content">
         <div class="row" style="background-color: #fff;border-bottom: 1px solid red;">
             <img class="dang_top_img" src="../../img/zT.jpg" />
-            <div class="dang_list_wrap col-md-8 col-md-offset-2 col-sm-12 ">
+            <div class="dang_list_wrap">
                 <p class="dang_title">
-                    <a>首页</a>
+                    <a href="/html/index.html">首页</a>
                     <span>/</span>
                     <a>专题活动</a>
                 </p>
@@ -85,6 +78,7 @@
                             </div>
                         </li>
                     </ul>
+                    <div class="page" id="Page"></div>
                 </div>
             </div>
         </div>
@@ -97,7 +91,7 @@
                 <li><a>我的积分</a></li>
                 <li><a>我的信息</a></li>
             </ul>
-            <div class="center_fix" style="background-color: #e9e9e9;">
+            <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
                 <ul>
                     <li><a>·6月28日支部党员大会</a></li>
@@ -105,7 +99,7 @@
                     <li><a>·6月28日支部党员大会</a></li>
                 </ul>
                 <a>更多>></a>
-            </div>
+            </div> -->
             <div class="er_wrap">
                 <img src="../../img/xuexi_we.jpg" />
                 <p>下载党建云APP</p>
@@ -118,11 +112,11 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="">人民网</a></li>
-                <li><a href="">中国共产党新闻网</a></li>
+                <li><a href="http://www.people.com.cn/">人民网</a></li>
+                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
                 <li><a href="">紫光阁</a></li>
-                <li><a href="">新华网</a></li>
-                <li><a href="">学习强国</a></li>
+                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
+                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
                 <li><a href="">陕煤集团</a></li>
                 <li><a href="">铁路物流公司</a></li>
             </ul>
@@ -136,11 +130,63 @@
 </body>
 <script src="../../js/jquery.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/axios.js"></script>
+<script src="../../js/qs.js"></script>
+<script src="../../js/vue.js"></script>
+<script src="../../js/MyPage.js"></script>
 <script>
-    $(function () {
-        $(".navbar-nav li").on("mouseenter",function () {
-            $(this).addClass("active").siblings().removeClass("active");
-        })
+    var vue = new Vue({
+        el:"#zTH",
+        data:{
+            nav_list:[ {name:"党建宣传",href:""},
+                    {name:"活动相册",href:""},
+                    {name:"支部动态",href:""},
+                    {name:"微党课",href:""},
+                    {name:"干部管理",href:""},
+                    {name:"党建考核",href:""},
+                    {name:"支部考评",href:""},
+                    {name:"学习强国",href:""}],
+            listData:[],
+            page:0,
+            p_size:10,
+            totalPage:0,
+        },
+        mounted:function(){
+            this.getData(1,this.p_size);
+        },
+        watch: {
+            totalPage:function(){
+                var that = this;
+                console.log(this.p_size)
+                P.initMathod({
+                    params: {elemId: '#Page',total:this.totalPage,pageSize:this.p_size},
+                    requestFunction: function (d_page,d_size) {
+                        that.getData(d_page,d_size);
+                        console.log(JSON.stringify(P.config));
+                    }
+                });
+            } 
+        },
+        methods: {
+            navMethod:function (index) {
+                $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
+            },
+            getData:function(page,size){
+                var that = this;
+                axios({
+                    url:"http://106.14.183.96/red-caragana-railway/news/getNewsList.do?newsColumn=10page="+page+"&size="+size,
+                    method:"GET",
+                }).then(function(res){
+                    if(res.data.code == 200){
+                        that.listData = res.data.data;
+                        that.totalPage = res.data.total;
+                    }
+                    /*that.dangJianNews*/
+                }).catch(function(err){
+
+                })
+            }
+        },
     })
 </script>
 </html>

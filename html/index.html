@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="box_container" id="indexBox">
+        <img src="../img/top_bg_img.jpg" alt="" class="nav_bg">
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="responsive-navbar">
+                    <ul class="nav navbar-nav">
+                        <li :class="{active:index <= 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href">{{navObject.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="sec_content">
+            <!--内容区域-->
+            <div class="row">
+                <h2>习近平出席庆祝人民海军成立70周年海上阅兵活动</h2>
+                <p class="subtitle"> 习近平出席上海合作组织成员国元首理事会第十九次会议并发表重要讲话强调秉持“上海精神”</p>
+                <div class="ad_img_wrap">
+                    <!--左侧轮播-->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="../img/ad1.jpg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/ad1.jpg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/ad1.jpg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/ad1.jpg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/ad1.jpg" alt="">
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-text">习近平出席第二十三届圣彼得堡国际经济论坛全会并致辞</div>
+                    </div>
+                    <!--右侧广告-->
+                    <ul class="ad_list">
+                        <li>
+                            十八届中央纪律检查委员会向中国共产党第十九次全国代表大会的工作报告
+                        </li>
+                        <li>
+                            十八届中央纪律检查委员会向中国共产党第十九次全国代表大会的工作报告
+                        </li>
+                        <li>
+                            十八届中央纪律检查委员会向中国共产党第十九次全国代表大会的工作报告
+                        </li>
+                        <li>
+                            十八届中央纪律检查委员会向中国共产党第十九次全国代表大会的工作报告
+                        </li>
+                        <li>
+                            十八届中央纪律检查委员会向中国共产党第十九次全国代表大会的工作报告
+                        </li>
+                    </ul>
+                </div>
+                <!--内容板块-->
+                <div class="content_wrap">
+                    <div class="left_content_box">
+                        <div class="left_content_title">
+                            <span>集团新闻</span>
+                            <a href="/html/jiTuanXinWen/list.html">更多>></a>
+                        </div>
+                        <div class="left_content_wrap">
+                            <div class="img_wrap">
+                                <img src="../img/jituan1.jpg" alt="">
+                                <p>商务部召开“第三届中国-蒙古国博览会”</p>
+                            </div>
+                            <ul>
+                                <li  v-for="newObject in listObject.dangJianNews">
+                                    <a :href="'/html/detail.html?type=0&rowId='+newObject.rowid" >{{newObject.newTitle}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_content_box">
+                        <div class="left_content_title">
+                            <span>党建要闻</span>
+                            <a href="/html/dangJianYaoWen/list.html">更多>></a>
+                        </div>
+                        <ul class="right_list">
+                            <li v-for="object in listObject.dJList">
+                                <a :href="'/html/detail.html?type=1&rowId='+object.rowid">
+                                    <img src="../img/dang1.jpg" alt="">
+                                    <div class="dang">
+                                        <h3>{{object.newTitle}}</h3>
+                                        <p>{{object.newContont}}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--图片广告位-->
+                <div class="center_img_wrap">
+                    <a href="/html/zhuanTiHuoDong/list.html">更多>></a>
+                    <ul>
+                        <li>
+                            <img src="../img/citiao1.jpg" alt="">
+                            <p>"不忘初心 牢记使命"主题教育培训会议</p>
+                        </li>
+                        <li>
+                            <img src="../img/citiao2.jpg" alt="">
+                            <p>"不忘初心 牢记使命"主题教育培训会议</p>
+                        </li>
+                        <li>
+                            <img src="../img/citiao3.jpg" alt="">
+                            <p>"不忘初心 牢记使命"主题教育培训会议</p>
+                        </li>
+                        <li>
+                            <img src="../img/citiao1.jpg" alt="">
+                            <p>"不忘初心 牢记使命"主题教育培训会议</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--支部动态和活动相册-->
+                <div class="zhibu_active_wrap">
+                    <div class="zhibu_wrap">
+                        <div class="left_content_title">
+                            <span>支部动态</span>
+                            <a href="/html/zhiBuDongTai/list.html">更多>></a>
+                        </div>
+                        <ul class="zhibu_ul">
+                            <li v-for="object in listObject.zBList">
+                                <a :href="'/html/detail.html?type=2&rowId='+object.rowid">
+                                    <span>{{object.organizationTitle}}</span>
+                                    <span>{{object.organizationTime}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="active_wrap active_picture_wrap">
+                        <div class="left_content_title">
+                            <span>活动相册</span>
+                            <a href="/html/huoDongXiangCe/list.html">更多>></a>
+                        </div>
+                        <ul>
+                            <li v-for="object in listObject.huoDongList">
+                                <img :src="object.newsImagess[0].imgSrc" alt="">
+                                <p>{{object.albumTitle}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--反腐倡廉和专题教育-->
+                <div class="zhibu_active_wrap">
+                    <div class="zhibu_wrap">
+                        <div class="left_content_title">
+                            <span>反腐倡廉</span>
+                            <a href="/html/fanFuChangLian/list.html">更多>></a>
+                        </div>
+                        <ul class="zhibu_ul">
+                            <li v-for="object in listObject.fanFuList">
+                                <a :href="'/html/detail.html?type=3&rowId='+object.rowid">
+                                    <span>{{object.newTitle}}</span>
+                                    <span>{{object.newsTime}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="active_wrap">
+                        <div class="left_content_title">
+                            <span>专题教育</span>
+                            <a href="/trainPC/html/zhuanTiJiaoYu/list.html">更多>></a>
+                        </div>
+                        <ul class="zhibu_ul">
+                            <li v-for="object in listObject.zuanTiList">
+                                <a :href="'/html/detail.html?type=4&rowId='+object.rowid">
+                                    <span>{{object.newTitle}}</span>
+                                    <span>{{object.newsTime}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--右侧栏-->
+            <div class="sec_right">
+                <ul class="list">
+                    <li><a>站内搜索</a></li>
+                    <li><a>我的学习</a></li>
+                    <li><a>我的考试</a></li>
+                    <li><a>我的积分</a></li>
+                    <li><a>我的信息</a></li>
+                </ul>
+                <div class="center_fix" style="background-color: #e9e9e9;">
+                    <p class="message_num">3条信息</p>
+                    <ul>
+                        <li><a>·6月28日支部党员大会</a></li>
+                        <li><a>·6月28日支部党员大会</a></li>
+                        <li><a>·6月28日支部党员大会</a></li>
+                    </ul>
+                    <a href="/html/zhiBuDongTai/list.html">更多>></a>
+                </div>
+                <div class="er_wrap">
+                    <img src="../img/xuexi_we.jpg" />
+                    <p>下载党建云APP</p>
+                    <img src="../img/xuexi_we.jpg" alt="">
+                    <p>下载学习强国APP</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_list">
+                <span>友情链接</span>
+                <ul>
+                    <li><a href="">人民网</a></li>
+                    <li><a href="">中国共产党新闻网</a></li>
+                    <li><a href="">紫光阁</a></li>
+                    <li><a href="">新华网</a></li>
+                    <li><a href="">学习强国</a></li>
+                    <li><a href="">陕煤集团</a></li>
+                    <li><a href="">铁路物流公司</a></li>
+                </ul>
+            </div>
+            <div class="footer_img">
+                <img src="../img/footer_bg.jpg" alt="">
+            </div>
+            <p class="footer_text">中共陕西红柠铁路有限公司委员会</p>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/axios.js"></script>
+<script src="../js/qs.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/index.js"></script>
+</html>

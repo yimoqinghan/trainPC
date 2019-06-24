@@ -36,9 +36,9 @@
                     <!--左侧轮播-->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-if="index>0"  v-for="object,index in listObject.hotList" >
+                            <div class="swiper-slide" v-if="index>0"  v-for="object,index in listObject.hotList" :key="index">
                                 <a :href="'/html/detail.html?type=&rowId='+object.rowid">
-                                    <img :src="object.imgUrls" alt="">
+                                    <img :src="object.imgSrc" alt="">
                                     <p class="swiper-text">{{object.newTitle}}</p>
                                 </a>
                             </div>
@@ -61,7 +61,7 @@
                         <div class="left_content_wrap">
                             <div class="img_wrap">
                                 <a :href="'/html/detail.html?type=0&rowId='+listObject.jiTuanNews[0].rowid" >
-                                    <img :src="listObject.jiTuanNews[0].imgUrls" alt="">
+                                    <img :src="listObject.jiTuanNews[0].imgSrc" alt="">
                                     <p>{{listObject.jiTuanNews[0].newTitle}}</p>
                                 </a>
                             </div>
@@ -80,7 +80,7 @@
                         <ul class="right_list">
                             <li v-for="object in listObject.dJList">
                                 <a :href="'/html/detail.html?type=1&rowId='+object.rowid">
-                                    <img :src="object.imgUrls" alt="">
+                                    <img :src="object.imgSrc" alt="">
                                     <div class="dang">
                                         <h3>{{object.newTitle}}</h3>
                                         <p>{{object.newContont}}</p>
@@ -92,11 +92,11 @@
                 </div>
                 <!--图片广告位-->
                 <div class="center_img_wrap">
-                    <a href="/html/zhuanTiHuoDong/list.html">更多>></a>
+                    <a class="more_active" href="/html/zhuanTiHuoDong/list.html">更多>></a>
                     <ul>
                         <li v-for="object in listObject.zuanHuoList">
                             <a :href="'/html/detail.html?type=5&rowId='+object.rowid">
-                                <img :src="object.imgUrls" alt="">
+                                <img :src="object.imgSrc" alt="">
                                 <p>{{object.newTitle}}</p>
                             </a>
                         </li>
@@ -125,9 +125,11 @@
                         </div>
                         <ul>
                             <li v-for="object in listObject.huoDongList">
-                                <!-- <img src="../img/active_1.jpg"> -->
-                                <img :src="object.newsImagess[0].imgSrc" alt="">
-                                <p>{{object.albumTitle}}</p>
+                                <a :href="'/html/active_detail.html?type=6&rowId='+object.rowid">
+                                    <img :src="object.newsImagess[0].imgSrc" alt="">
+                                    <p>{{object.albumTitle}}</p>
+                                </a>
+                                
                             </li>
                         </ul>
                     </div>
@@ -194,13 +196,13 @@
             <div class="footer_list">
                 <span>友情链接</span>
                 <ul>
-                    <li><a href="http://www.people.com.cn/">人民网</a></li>
-                    <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
-                    <li><a href="">紫光阁</a></li>
-                    <li><a href="http://www.xinhuanet.com/">新华网</a></li>
-                    <li><a href="https://www.xuexi.cn/">学习强国</a></li>
-                    <li><a href="">陕煤集团</a></li>
-                    <li><a href="">铁路物流公司</a></li>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="">紫光阁</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="">陕煤集团</a></li>
+                    <li><a target="_blank" href="">铁路物流公司</a></li>
                 </ul>
             </div>
             <div class="footer_img">

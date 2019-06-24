@@ -185,3 +185,38 @@ html,body{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
 }
+.zhi_list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width:100%;
+    overflow: hidden;
+    padding:30px 0 40px;
+}
+.zhi_list li{
+    float:left;
+    width:483px;
+    margin-bottom:25px;
+    overflow: hidden;
+}
+.zhi_list li:nth-child(2n){
+    float:right;
+}
+.zhi_list li span{
+    display:inline-block;
+    font-size:16px;
+    color:#333333;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.zhi_list li span:first-child{
+    float:left;
+    width:380px;
+    text-align: left;
+}
+.zhi_list li span:last-child{
+    float:right;
+    width:75px;
+    text-align: right;
+}

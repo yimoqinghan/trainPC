@@ -78,15 +78,16 @@ html,body{
     color:#fff;
     text-align:left;
     cursor: pointer;
+    /* white-space:pre-line; */
+}
+.ad_list li a{
+    color:#fff;
+    display:inline-block;
     display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    /* white-space:pre-line; */
-}
-.ad_list li a{
-    color:#fff;
 }
 .ad_list li:last-child{
     border-bottom: none;
@@ -307,7 +308,7 @@ html,body{
     width:100%;
     height:100%;
 }
-.center_img_wrap a{
+.center_img_wrap a.more_active{
     display: inline-block;
     font-size:14px;
     color:#919191;

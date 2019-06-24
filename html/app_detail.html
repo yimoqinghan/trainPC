@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>详情</title>
+    <style>
+        .box_container{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="box_container" id="detail">
+   
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    function getNewsDetail(id){
+        $.ajax({
+            type:"GET",
+            url:'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+id,
+            success:function(res){
+                if(res.code == 200){
+                    var dataObject = res.data.tagContent;
+                    $(".box_container").append(dataObject);
+                }
+            }
+        })
+    }
+</script>
+</html>

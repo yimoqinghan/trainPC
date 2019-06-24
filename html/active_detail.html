@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/dangJianYaoWen/list.css">
-    <title>详情</title>
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            width:100%;
+            height:625px;
+        }
+        .swiper-slide img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+    <title>活动相册</title>
 </head>
 <body>
 <div class="box_container" id="detail">
@@ -33,13 +65,22 @@
                 <p class="dang_title">
                     <a href="/html/index.html">首页</a>
                     <span>/</span>
-                    <a v-if="newsType != ''" :href="'/html/'+newsTypes[newsType].fileName+'/list.html'">{{newsTypes[newsType].name}}</a>
-                    <span v-if="newsType != ''">/</span>
+                    <a href="/html/huoDongXiangCe/list.html">活动相册</a>
+                    <span >/</span>
                     <a>详情</a>
                 </p>
                 <!--<div class="content_title">专题活动</div>-->
-                <div class="dang_content" v-html="detailObject">
-
+                <div class="dang_content">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide" v-for="object in detailObject">
+                              <img :src="object.imgSrc" />
+                          </div>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                      </div>
                 </div>
             </div>
         </div>
@@ -91,6 +132,7 @@
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/swiper.min.js"></script>
 <script src="../js/axios.js"></script>
 <script src="../js/qs.js"></script>
 <script src="../js/vue.js"></script>
@@ -106,13 +148,6 @@
                     {name:"党建考核",href:""},
                     {name:"支部考评",href:""},
                     {name:"学习强国",href:""}],
-            newsTypes:[{name:"集团新闻",fileName:"jiTuanXinWen"},
-            {name:"党建要闻",fileName:"dangJianYaoWen"},
-            {name:"支部动态",fileName:"zhiBuDongTai"},
-            {name:"反腐倡廉",fileName:"fanFuChangLian"},
-            {name:"专题教育",fileName:"zhuanTiJiaoYu"},
-            {name:"专题活动",fileName:"zhuanTiHuoDong"},
-            {name:"活动相册",fileName:"huoDongXiangCe"}],
             detailObject:"",
             newsType:"",
         },
@@ -124,10 +159,18 @@
             console.log(rowId)
             axios({
                 method: 'GET',
-                url: 'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+rowId,
+                url: 'http://106.14.183.96/red-caragana-railway/album/queryAlbumImagesContent.do?rowid='+rowId,
             }).then(function(res){
                 if(res.data.code == 200){
-                    that.detailObject = res.data.data.tagContent;
+                    that.detailObject = res.data.data;
+                    var swiper = new Swiper('.swiper-container', {
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        observer:true, //修改swiper自己或子元素时，自动初始化swiper
+                        observeParents:true,
+                    });
                     console.log("that.detailObject",that.detailObject)
                 }
             }).catch(function(error){

@@ -39,9 +39,11 @@
                 <div class="dang_content">
                     <ul class="picture_list" style="padding-top:30px;">
                         <li v-for="object in listData">
-                            <img :src="object.newsImagess[0].imgSrc" alt="">
-                            <p style="margin-top:10px; ">{{object.albumTitle}}</p>
-                            <p>2019-05-18</p>
+                            <a :href="'../../html/active_detail.html?type=6&rowId='+object.rowid">
+                                <img :src="object.newsImagess[0].imgSrc" alt="">
+                                <p style="margin-top:10px; ">{{object.albumTitle}}</p>
+                                <!-- <p>2019-05-18</p> -->
+                            </a>
                         </li>
                     </ul>
                     <div class="page" id="Page"></div>
@@ -78,14 +80,14 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="http://www.people.com.cn/">人民网</a></li>
-                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
-                <li><a href="">紫光阁</a></li>
-                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
-                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
-                <li><a href="">陕煤集团</a></li>
-                <li><a href="">铁路物流公司</a></li>
-            </ul>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="">紫光阁</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="">陕煤集团</a></li>
+                    <li><a target="_blank" href="">铁路物流公司</a></li>
+                </ul>
         </div>
         <div class="footer_img">
             <img src="../../img/footer_bg.jpg" alt="">

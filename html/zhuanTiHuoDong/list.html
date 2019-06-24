@@ -38,44 +38,15 @@
                 <div class="content_title">专题活动</div>
                 <div class="dang_content">
                     <ul class="fan_fu">
-                        <li>
-                            <img src="../../img/active_1.jpg" alt="">
-                            <div class="right_content">
-                                <h3>习近平结束俄罗斯之行回到北京</h3>
-                                <p class="right_content_1">中国共产党第十八次全国代表大会以来，在以习近平同志为核心的党中央坚强领导下，
-                                    十八届中央纪律检查委员会和各级纪律检查委员会全面贯彻党的十八大和十八届三中、
-                                    四中、五中、六中全会部署，深入贯彻习近平新时代中国特色社会主义思想，
-                                    紧紧围绕党的领导、党的建设、全面从严治党、党风廉政建设和反腐败斗争，忠诚履职、
-                                    勇于担当，为统筹推进“五位一体”总体布局和协调推进“四个全面”战略布局提供了坚强保障。
-                                    现将五年来工作情况和今后工作建议向党的第十九次全国代表大会报告，请予审查。</p>
-                                <p>2019-05-10</p>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="../../img/active_1.jpg" alt="">
-                            <div class="right_content">
-                                <h3>习近平结束俄罗斯之行回到北京</h3>
-                                <p class="right_content_1">中国共产党第十八次全国代表大会以来，在以习近平同志为核心的党中央坚强领导下，
-                                    十八届中央纪律检查委员会和各级纪律检查委员会全面贯彻党的十八大和十八届三中、
-                                    四中、五中、六中全会部署，深入贯彻习近平新时代中国特色社会主义思想，
-                                    紧紧围绕党的领导、党的建设、全面从严治党、党风廉政建设和反腐败斗争，忠诚履职、
-                                    勇于担当，为统筹推进“五位一体”总体布局和协调推进“四个全面”战略布局提供了坚强保障。
-                                    现将五年来工作情况和今后工作建议向党的第十九次全国代表大会报告，请予审查。</p>
-                                <p>2019-05-10</p>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="../../img/active_1.jpg" alt="">
-                            <div class="right_content">
-                                <h3>习近平结束俄罗斯之行回到北京</h3>
-                                <p class="right_content_1">中国共产党第十八次全国代表大会以来，在以习近平同志为核心的党中央坚强领导下，
-                                    十八届中央纪律检查委员会和各级纪律检查委员会全面贯彻党的十八大和十八届三中、
-                                    四中、五中、六中全会部署，深入贯彻习近平新时代中国特色社会主义思想，
-                                    紧紧围绕党的领导、党的建设、全面从严治党、党风廉政建设和反腐败斗争，忠诚履职、
-                                    勇于担当，为统筹推进“五位一体”总体布局和协调推进“四个全面”战略布局提供了坚强保障。
-                                    现将五年来工作情况和今后工作建议向党的第十九次全国代表大会报告，请予审查。</p>
-                                <p>2019-05-10</p>
-                            </div>
+                        <li v-for="object in listData">
+                            <a :href="'../../html/detail.html?type=5&rowId='+object.rowid">
+                                <img :src="object.imgSrc" alt="">
+                                <div class="right_content">
+                                    <h3>{{object.newTitle}}</h3>
+                                    <p class="right_content_1">{{object.tagContent}}</p>
+                                    <p>{{object.newsTime}}</p>
+                                </div>
+                            </a>
                         </li>
                     </ul>
                     <div class="page" id="Page"></div>
@@ -112,14 +83,14 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="http://www.people.com.cn/">人民网</a></li>
-                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
-                <li><a href="">紫光阁</a></li>
-                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
-                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
-                <li><a href="">陕煤集团</a></li>
-                <li><a href="">铁路物流公司</a></li>
-            </ul>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="">紫光阁</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="">陕煤集团</a></li>
+                    <li><a target="_blank" href="">铁路物流公司</a></li>
+                </ul>
         </div>
         <div class="footer_img">
             <img src="../../img/footer_bg.jpg" alt="">
@@ -174,7 +145,7 @@
             getData:function(page,size){
                 var that = this;
                 axios({
-                    url:"http://106.14.183.96/red-caragana-railway/news/getNewsList.do?newsColumn=10page="+page+"&size="+size,
+                    url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn=10&page="+page+"&size="+size,
                     method:"GET",
                 }).then(function(res){
                     if(res.data.code == 200){

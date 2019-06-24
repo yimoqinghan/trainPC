@@ -1,21 +1,7 @@
 /**
  * Created by niuxingxing on 2019/6/17.
  */
-$(function(){
-    var swiper = new Swiper('.swiper-container', {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-     
-    });
-})
+
 var vue = new Vue({
     el:"#indexBox",
     data:{
@@ -38,7 +24,7 @@ var vue = new Vue({
         }
     },
     created:function () {
-        this.newsListShow("hotList","",6,1);
+        this.newsListShow("hotList",4,6);
         this.newsListShow("jiTuanNews",2,7);
         this.newsListShow("dJList",3,6);
         this.getzhiBuData(10);
@@ -49,15 +35,30 @@ var vue = new Vue({
     },
     methods:{
         /*新闻列表*/
-        newsListShow:function (objectName,type,size,isHot) {
+        newsListShow:function (objectName,type,size) {
             var that = this;
             axios({
-                url:"http://106.14.183.96/red-caragana-railway/news/getNewsList.do?newsColumn="+type+"&newsRecommend="+isHot+"&page=1&size="+size,
+                url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn="+type+"&page=1&size="+size,
                 method:"GET",
             }).then(function(res){
                 console.log("d",objectName)
                 if(res.data.code == 200){
                     that.listObject[objectName] = res.data.data;
+                        var swiper = new Swiper('.swiper-container', {
+                            spaceBetween: 30,
+                            centeredSlides: true,
+                            observer:true, //修改swiper自己或子元素时，自动初始化swiper
+                            observeParents:true,
+                            autoplay: {
+                                delay: 1000,
+                                disableOnInteraction: false,
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                         
+                        });
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){

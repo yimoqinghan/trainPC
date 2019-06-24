@@ -40,7 +40,7 @@
                     <ul class="dang_ul_list">
                         <li v-for="object in listData">
                             <a :href="'../../html/detail.html?type=0&rowId='+object.rowid">
-                                <img :src="object.imgUrls" alt="">
+                                <img :src="object.imgSrc" alt="">
                                 <div class="right">
                                     <h3>{{object.newTitle}}</h3>
                                     <p>{{object.newContont}}</p>
@@ -82,14 +82,14 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="http://www.people.com.cn/">人民网</a></li>
-                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
-                <li><a href="">紫光阁</a></li>
-                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
-                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
-                <li><a href="">陕煤集团</a></li>
-                <li><a href="">铁路物流公司</a></li>
-            </ul>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="">紫光阁</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="">陕煤集团</a></li>
+                    <li><a target="_blank" href="">铁路物流公司</a></li>
+                </ul>
         </div>
         <div class="footer_img">
             <img src="../../img/footer_bg.jpg" alt="">
@@ -144,7 +144,7 @@
             getData:function(page,size){
                 var that = this;
                 axios({
-                    url:"http://106.14.183.96/red-caragana-railway/news/getNewsList.do?newsColumn=2&page="+page+"&size="+size,
+                    url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn=2&page="+page+"&size="+size,
                     method:"GET",
                 }).then(function(res){
                     if(res.data.code == 200){

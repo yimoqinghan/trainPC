@@ -29,7 +29,7 @@
     <div class="sec_content">
         <div class="row" style="background-color: #fff;border-bottom: 1px solid red;">
             <img class="dang_top_img" src="../../img/zB.jpg" />
-            <div class="dang_list_wrap col-md-8 col-md-offset-2 col-sm-12 ">
+            <div class="dang_list_wrap">
                 <p class="dang_title">
                     <a href="/html/index.html">首页</a>
                     <span>/</span>
@@ -37,8 +37,13 @@
                 </p>
                 <div class="content_title">支部动态</div>
                 <div class="dang_content">
-                    <ul>
-                        
+                    <ul class="zhi_list">
+                        <li v-for="object,index in listData">
+                            <a :href="'../../html/detail.html?type=2&rowId='+object.rowid">
+                                <span>{{object.organizationTitle}}</span>
+                                <span>{{object.organizationTime}}</span>
+                            </a>
+                        </li>
                     </ul>
                     <div class="page" id="Page"></div>
                 </div>
@@ -74,14 +79,14 @@
         <div class="footer_list">
             <span>友情链接</span>
             <ul>
-                <li><a href="http://www.people.com.cn/">人民网</a></li>
-                <li><a href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
-                <li><a href="">紫光阁</a></li>
-                <li><a href="http://www.xinhuanet.com/">新华网</a></li>
-                <li><a href="https://www.xuexi.cn/">学习强国</a></li>
-                <li><a href="">陕煤集团</a></li>
-                <li><a href="">铁路物流公司</a></li>
-            </ul>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="">紫光阁</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="">陕煤集团</a></li>
+                    <li><a target="_blank" href="">铁路物流公司</a></li>
+                </ul>
         </div>
         <div class="footer_img">
             <img src="../../img/footer_bg.jpg" alt="">
@@ -110,7 +115,7 @@
                     {name:"学习强国",href:""}],
             listData:[],
             page:0,
-            p_size:10,
+            p_size:30,
             totalPage:0,
         },
         mounted:function(){

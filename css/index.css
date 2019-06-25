@@ -230,6 +230,7 @@ html,body{
 .right_list li{
     float:left;
     width:50%;
+    min-height:115px;
     overflow: hidden;
     margin-bottom:17px;
 }

@@ -31,7 +31,7 @@
             <img class="dang_top_img" src="../../img/hD.jpg" />
             <div class="dang_list_wrap">
                 <p class="dang_title">
-                    <a href="/html/index.html">首页</a>
+                    <a href="/trainPC/html/index.html">首页</a>
                     <span>/</span>
                     <a>活动相册</a>
                 </p>
@@ -39,7 +39,7 @@
                 <div class="dang_content">
                     <ul class="picture_list" style="padding-top:30px;">
                         <li v-for="object in listData">
-                            <a :href="'../../html/active_detail.html?type=6&rowId='+object.rowid">
+                            <a :href="'/trainPC/html/active_detail.html?type=6&rowId='+object.rowid">
                                 <img :src="object.newsImagess[0].imgSrc" alt="">
                                 <p style="margin-top:10px; ">{{object.albumTitle}}</p>
                                 <!-- <p>2019-05-18</p> -->

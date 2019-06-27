@@ -21,9 +21,13 @@ var vue = new Vue({
                     zuanTiList:[],
                     hotList:[],
                     zuanHuoList:[],
-        }
+        },
+        guoNeiYaoWen:[],
     },
     created:function () {
+        
+    },
+    mounted:function(){
         this.newsListShow("hotList",4,6);
         this.newsListShow("jiTuanNews",2,7);
         this.newsListShow("dJList",3,6);
@@ -34,6 +38,24 @@ var vue = new Vue({
         this.newsListShow("zuanHuoList",10,4);
     },
     methods:{
+        initSwiper:function(){
+            var swiper = new Swiper('.swiper-container', {
+                spaceBetween: 30,
+                centeredSlides: true,
+                observer:true, //修改swiper自己或子元素时，自动初始化swiper
+                observeParents:true,
+                loop:true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+             
+            });
+        },
         /*新闻列表*/
         newsListShow:function (objectName,type,size) {
             var that = this;
@@ -49,23 +71,17 @@ var vue = new Vue({
                             }
                         }
                     }
-                    console.log("res.data.data",res.data.data)
+                    if(objectName == "hotList" && res.data.data.length >0){
+                        for(var k=0;k<res.data.data.length;k++){
+                           if( k >= 1){
+                                that.guoNeiYaoWen.push(res.data.data[k]);
+                           }
+                        }
+                        that.$nextTick(() => { // 下一个UI帧再初始化swiper
+                            that.initSwiper();
+                         });
+                    }
                     that.listObject[objectName] = res.data.data;
-                        var swiper = new Swiper('.swiper-container', {
-                            spaceBetween: 30,
-                            centeredSlides: true,
-                            observer:true, //修改swiper自己或子元素时，自动初始化swiper
-                            observeParents:true,
-                            autoplay: {
-                                delay: 1000,
-                                disableOnInteraction: false,
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                         
-                        });
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){

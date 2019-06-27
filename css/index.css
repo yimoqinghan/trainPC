@@ -180,8 +180,9 @@ html,body{
 .left_content_wrap ul{
     list-style-type: none;
     width:100%;
-    padding-bottom: 28px;
+    padding-bottom: 20px;
     padding-left:0;
+    margin:0;
 }
 .left_content_wrap ul li{
     width: 100%;
@@ -201,7 +202,7 @@ html,body{
 }
 .img_wrap{
     width:100%;
-    height:180px;
+    height:200px;
     position: relative;
 }
 .img_wrap p{
@@ -236,7 +237,7 @@ html,body{
 }
 .right_list li img{
     width:112px;
-    height:110px;
+    height:100px;
     float:left;
 }
 .right_list li .dang{
@@ -260,6 +261,7 @@ html,body{
     width:100%;
     text-align: left;
     padding: 0;
+    margin:0;
     margin-top:10px;
     display: -webkit-box;
     text-overflow: ellipsis;

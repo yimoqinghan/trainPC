@@ -54,7 +54,7 @@
         <!--右侧栏-->
         <div class="sec_right">
             <ul class="list">
-                <li><a>站内搜索</a></li>
+                <!-- <li><a>站内搜索</a></li> -->
                 <li><a>我的学习</a></li>
                 <li><a>我的考试</a></li>
                 <li><a>我的积分</a></li>
@@ -103,6 +103,7 @@
 <script src="../js/axios.js"></script>
 <script src="../js/qs.js"></script>
 <script src="../js/vue.js"></script>
+<script src="../js/common.js"></script>
 <script>
     var vm = new Vue({
         el:"#detail",
@@ -130,10 +131,10 @@
             this.navMethod();
             var rowId = that.getId()["rowId"];
             this.newsType = that.getId()["type"];
-            console.log(rowId)
+            var new_url='http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+rowId;
             axios({
                 method: 'GET',
-                url: 'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+rowId,
+                url:new_url,
             }).then(function(res){
                 if(res.data.code == 200){
                     that.detailObject = res.data.data;

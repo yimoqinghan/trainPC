@@ -131,11 +131,13 @@ html,body{
     text-align: left;
     font-size:14px;
     color:#808080;
-    display: -webkit-box;
+    margin:0;
+    padding:0;
+    /* display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 2; */
 }
 .fan_fu{
     list-style-type: none;
@@ -176,14 +178,18 @@ html,body{
     padding:7px 0;
     font-size:18px;
     color:black;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+
 }
 .fan_fu li .right_content p.right_content_1{
     margin-bottom:6px;
-    display: -webkit-box;
+    /* display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 4; */
 }
 .zhi_list{
     list-style-type: none;

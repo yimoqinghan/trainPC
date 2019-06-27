@@ -41,12 +41,12 @@
     function getNewsDetail(newsId){
             $.ajax({
                 type:"GET",
-                url:'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+newsId,
+                url:'http://106.14.183.96/red-caragana-railway/organization/getOrganizationByid.do?rowid='+newsId,
                 dataType : "json",
                 success:function(res){
                     if(res.code == 200){
-                        var dataObject = res.data.tagContent;
-                        $(".box_container").append(dataObject);
+                        var dataObject = res.data;
+                        $(".box_container").append(dataObject.organizationContont);
                     }
                 }
             })

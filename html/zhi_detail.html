@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/nav.css">
-    <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
-    <title>反腐倡廉</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/dangJianYaoWen/list.css">
+    <title>详情</title>
 </head>
 <body>
-<div class="box_container" id="fF">
-    <img src="../../img/top_bg_img.jpg" alt="" class="nav_bg">
+<div class="box_container" id="detail">
+    <img src="../img/top_bg_img.jpg" alt="" class="nav_bg">
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -30,35 +29,28 @@
     </nav>
     <div class="sec_content">
         <div class="row" style="background-color: #fff;border-bottom: 1px solid red;">
-            <img class="dang_top_img" src="../../img/fanfudm.jpg" />
+            <!--<img class="dang_top_img" src="../img/zT.jpg" />-->
             <div class="dang_list_wrap">
                 <p class="dang_title">
                     <a href="/trainPC/html/index.html">首页</a>
                     <span>/</span>
-                    <a>反腐倡廉</a>
+                    <a v-if="newsType != ''" :href="'/trainPC/html/'+newsTypes[newsType].fileName+'/list.html'">{{newsTypes[newsType].name}}</a>
+                    <span v-if="newsType != ''">/</span>
+                    <a>详情</a>
                 </p>
-                <div class="content_title">反腐倡廉</div>
-                <div class="dang_content">
-                    <ul class="fan_fu">
-                        <li v-for="object in listData">
-                            <a :href="'/trainPC/html/detail.html?type=3&rowId='+object.rowid">
-                                <img :src="object.allImgUrl[0]" alt="">
-                                <div class="right_content">
-                                    <h3>{{object.newTitle}}</h3>
-                                    <p class="right_content_1">{{object.newContont | readMore(220,'...')}}</p>
-                                    <p>{{object.newsTime}}</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="page" id="Page"></div>
-                </div>
+                <!--<div class="content_title">专题活动</div>-->
+                <h2 v-if="detailObject.organizationTitle">{{detailObject.organizationTitle}}</h2>
+                <p style="text-align:center;" v-if="detailObject.organizationTime">
+                    <span>发布时间:</span>
+                    <span>{{detailObject.organizationTime}}</span>
+                </p> 
+                <div class="dang_content" v-html="detailObject.organizationContont"></div>
             </div>
         </div>
         <!--右侧栏-->
         <div class="sec_right">
             <ul class="list">
-                <!-- <li><a>站内搜索</a></li> -->
+                <li><a>站内搜索</a></li>
                 <li><a>我的学习</a></li>
                 <li><a>我的考试</a></li>
                 <li><a>我的积分</a></li>
@@ -74,9 +66,9 @@
                 <a>更多>></a>
             </div> -->
             <div class="er_wrap">
-                <img src="../../img/xuexi_we.jpg" />
+                <img src="../img/xuexi_we.jpg" />
                 <p>下载党建云APP</p>
-                <img src="../../img/xuexi_we.jpg" alt="">
+                <img src="../img/xuexi_we.jpg" alt="">
                 <p>下载学习强国APP</p>
             </div>
         </div>
@@ -95,23 +87,22 @@
                 </ul>
         </div>
         <div class="footer_img">
-            <img src="../../img/footer_bg.jpg" alt="">
+            <img src="../img/footer_bg.jpg" alt="">
         </div>
         <p class="footer_text">中共陕西红柠铁路有限公司委员会</p>
     </div>
 </div>
 </body>
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/polyfill.min.js"></script>
-<script src="../../js/axios.js"></script>
-<script src="../../js/qs.js"></script>
-<script src="../../js/vue.js"></script>
-<script src="../../js/common.js"></script>
-<script src="../../js/MyPage.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/polyfill.min.js"></script>
+<script src="../js/axios.js"></script>
+<script src="../js/qs.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/common.js"></script>
 <script>
-    var vue = new Vue({
-        el:"#fF",
+    var vm = new Vue({
+        el:"#detail",
         data:{
             nav_list:[ {name:"党建宣传",href:""},
                     {name:"活动相册",href:""},
@@ -121,47 +112,56 @@
                     {name:"党建考核",href:""},
                     {name:"支部考评",href:""},
                     {name:"学习强国",href:""}],
-            listData:[],
-            page:0,
-            p_size:10,
-            totalPage:0,
+            newsTypes:[{name:"集团新闻",fileName:"jiTuanXinWen"},
+            {name:"党建要闻",fileName:"dangJianYaoWen"},
+            {name:"支部动态",fileName:"zhiBuDongTai"},
+            {name:"反腐倡廉",fileName:"fanFuChangLian"},
+            {name:"专题教育",fileName:"zhuanTiJiaoYu"},
+            {name:"专题活动",fileName:"zhuanTiHuoDong"},
+            {name:"活动相册",fileName:"huoDongXiangCe"}],
+            detailObject:"",
+            newsType:"",
         },
-        mounted:function(){
-            this.getData(1,this.p_size);
+        created:function () {
+            var that = this;
+            this.navMethod();
+            var rowId = that.getId()["rowId"];
+            this.newsType = that.getId()["type"];
+            var new_url = "http://106.14.183.96/red-caragana-railway/organization/getOrganizationByid.do?rowid="+rowId;
+            axios({
+                method: 'GET',
+                url:new_url,
+            }).then(function(res){
+                if(res.data.code == 200){
+                    that.detailObject = res.data.data;
+                    console.log("that.detailObject",that.detailObject)
+                }
+            }).catch(function(error){
+                console.log(error);
+            })
         },
-        watch: {
-            totalPage:function(){
-                var that = this;
-                console.log(this.p_size)
-                P.initMathod({
-                    params: {elemId: '#Page',total:this.totalPage,pageSize:this.p_size},
-                    requestFunction: function (d_page,d_size) {
-                        that.getData(d_page,d_size);
-                        console.log(JSON.stringify(P.config));
+        methods:{
+            getId:function(){
+                var url = location.search; //获取url中"?"符后的字串
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for(var i = 0; i < strs.length; i ++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
                     }
-                });
-            } 
-        },
-        methods: {
-            navMethod:function (index) {
-                $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
+                }
+                return theRequest;
             },
-            getData:function(page,size){
-                var that = this;
-                axios({
-                    url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn=5&page="+page+"&size="+size,
-                    method:"GET",
-                }).then(function(res){
-                    if(res.data.code == 200){
-                        that.listData = res.data.data;
-                        that.totalPage = res.data.total;
-                    }
-                    /*that.dangJianNews*/
-                }).catch(function(err){
-
+            navMethod:function () {
+                $(".navbar-nav li").on("mouseenter",function () {
+                    $(this).addClass("active").siblings().removeClass("active");
                 })
             }
-        },
+        }
+    })
+    $(function () {
+
     })
 </script>
 </html>

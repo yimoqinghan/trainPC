@@ -24,9 +24,6 @@ var vue = new Vue({
         },
         guoNeiYaoWen:[],
     },
-    created:function () {
-        
-    },
     mounted:function(){
         this.newsListShow("hotList",4,6);
         this.newsListShow("jiTuanNews",2,7);

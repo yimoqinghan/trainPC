@@ -54,7 +54,7 @@
                     <!--右侧广告-->
                     <ul class="ad_list">
                         <template v-if="listObject.hotList.length > 0">
-                            <li v-if="index>0" v-for="(object,index) in listObject.hotList"><a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">{{object.newTitle}}</a></li>
+                            <li v-if="index>0" v-for="(object,index) in listObject.hotList"><a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">{{object.newTitle | readMore(25,'...')}}</a></li>
                         </template>
                     </ul>
                 </div>
@@ -94,7 +94,7 @@
                                         <img :src="object.allImgUrl[0]" alt="">
                                         <div class="dang">
                                             <h3>{{object.newTitle}}</h3>
-                                            <p>{{object.newContont}}</p>
+                                            <p>{{object.newContont | readMore(50, '...')}}</p>
                                         </div>
                                     </a>
                                 </li>
@@ -126,7 +126,7 @@
                         <ul class="zhibu_ul">
                             <template v-if="listObject.zBList.length > 0">
                                 <li v-for="object in listObject.zBList">
-                                    <a :href="'/trainPC/html/detail.html?type=2&rowId='+object.rowid">
+                                    <a :href="'/trainPC/html/zhi_detail.html?type=2&rowId='+object.rowid">
                                         <span>{{object.organizationTitle}}</span>
                                         <span style="text-align: left;">{{object.organizationTime}}</span>
                                     </a>
@@ -190,7 +190,7 @@
             <!--右侧栏-->
             <div class="sec_right">
                 <ul class="list">
-                    <li><a>站内搜索</a></li>
+                    <!-- <li><a>站内搜索</a></li> -->
                     <li><a>我的学习</a></li>
                     <li><a>我的考试</a></li>
                     <li><a>我的积分</a></li>
@@ -240,5 +240,6 @@
 <script src="../js/axios.js"></script>
 <script src="../js/qs.js"></script>
 <script src="../js/vue.js"></script>
+<script src="../js/common.js"></script>
 <script src="../js/index.js"></script>
 </html>

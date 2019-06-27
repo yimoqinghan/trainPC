@@ -52,7 +52,7 @@
                                 <img :src="object.allImgUrl[0]" alt="">
                                 <div class="right_content">
                                     <h3>{{object.newTitle}}</h3>
-                                    <p class="right_content_1">{{object.newContont}}</p>
+                                    <p class="right_content_1">{{object.newContont | readMore(200,'...')}}</p>
                                     <p>{{object.newsTime}}</p>
                                 </div>
                             </a>
@@ -65,7 +65,7 @@
         <!--右侧栏-->
         <div class="sec_right">
             <ul class="list">
-                <li><a>站内搜索</a></li>
+                <!-- <li><a>站内搜索</a></li> -->
                 <li><a>我的学习</a></li>
                 <li><a>我的考试</a></li>
                 <li><a>我的积分</a></li>
@@ -114,6 +114,7 @@
 <script src="../../js/axios.js"></script>
 <script src="../../js/qs.js"></script>
 <script src="../../js/vue.js"></script>
+<script src="../../js/common.js"></script>
 <script src="../../js/MyPage.js"></script>
 <script>
     var vue = new Vue({

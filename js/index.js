@@ -35,6 +35,11 @@ var vue = new Vue({
         this.newsListShow("zuanHuoList",10,4);
     },
     methods:{
+        onloadImg:function(imgSrc){
+            if(imgSrc){
+                return 'this.onload=null;this.src='+'"'+imgSrc+'";'
+            }
+        },
         initSwiper:function(){
             var swiper = new Swiper('.swiper-container', {
                 spaceBetween: 30,

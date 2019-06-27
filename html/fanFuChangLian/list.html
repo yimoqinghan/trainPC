@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
+    <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
     <title>反腐倡廉</title>
 </head>
 <body>
@@ -42,7 +43,7 @@
                     <ul class="fan_fu">
                         <li v-for="object in listData">
                             <a :href="'/trainPC/html/detail.html?type=3&rowId='+object.rowid">
-                                <img :src="object.allImgUrl[0]" alt="">
+                                <img src="../../img/zhan_img_c.jpg" :onload="onloadImg(object.allImgUrl[0])" alt="">
                                 <div class="right_content">
                                     <h3>{{object.newTitle}}</h3>
                                     <p class="right_content_1">{{object.newContont | readMore(220,'...')}}</p>
@@ -143,6 +144,11 @@
             } 
         },
         methods: {
+            onloadImg:function(imgSrc){
+                if(imgSrc){
+                    return 'this.onload=null;this.src='+'"'+imgSrc+'";'
+                }
+            },
             navMethod:function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },
@@ -154,6 +160,13 @@
                 }).then(function(res){
                     if(res.data.code == 200){
                         that.listData = res.data.data;
+                        if(that.listData.length > 0){
+                            for(var i=0;i<that.listData.length;i++){
+                                if(that.listData[i].allImgUrl.length <= 0 && that.listData[i].imgSrc != ""){
+                                    that.listData[i].allImgUrl.push(that.listData[i].imgSrc);
+                                }
+                            }
+                        }
                         that.totalPage = res.data.total;
                     }
                     /*that.dangJianNews*/

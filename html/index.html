@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <title>首页</title>
+    <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link rel="stylesheet" href="../css/nav.css">
@@ -37,13 +38,13 @@
                             <a :href="'/trainPC/html/detail.html?type=&rowId='+listObject.hotList[0].rowid">{{listObject.hotList[0].newTitle}}</a>
                     </template>
                 </h2>
-                <div class="ad_img_wrap">
+                <div class="ad_img_wrap" v-if="guoNeiYaoWen.length">
                     <!--左侧轮播-->
-                    <div class="swiper-container" >
-                        <div class="swiper-wrapper" v-if="guoNeiYaoWen.length">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper" >
                             <div class="swiper-slide"   v-for="object,index in guoNeiYaoWen" :key="index">
                                 <a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">
-                                    <img :src="object.allImgUrl[0]" alt="">
+                                    <img src="../img/zhan_img_c.jpg" :onload="onloadImg(object.allImgUrl[0])" alt="">
                                     <p class="swiper-text">{{object.newTitle}}</p>
                                 </a>
                             </div>
@@ -53,8 +54,8 @@
                     
                     <!--右侧广告-->
                     <ul class="ad_list">
-                        <template v-if="listObject.hotList.length > 0">
-                            <li v-if="index>0" v-for="(object,index) in listObject.hotList"><a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">{{object.newTitle | readMore(25,'...')}}</a></li>
+                        <template v-if="guoNeiYaoWen.length > 0">
+                            <li v-for="object,index in guoNeiYaoWen" :key="index"><a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">{{object.newTitle  | readMore(25,'...')}}</a></li>
                         </template>
                     </ul>
                 </div>
@@ -69,7 +70,7 @@
                             <template v-if="listObject.jiTuanNews.length > 0">
                                 <div class="img_wrap">
                                         <a :href="'/trainPC/html/detail.html?type=0&rowId='+listObject.jiTuanNews[0].rowid" >
-                                            <img :src="listObject.jiTuanNews[0].allImgUrl[0]" alt="">
+                                            <img src="../img/zhan_img_c.jpg" :onload="onloadImg(listObject.jiTuanNews[0].allImgUrl[0])"  alt="">
                                             <p>{{listObject.jiTuanNews[0].newTitle}}</p>
                                         </a>
                                     
@@ -91,7 +92,7 @@
                             <template v-if="listObject.dJList.length > 0">
                                 <li v-for="object in listObject.dJList">
                                     <a :href="'/trainPC/html/detail.html?type=1&rowId='+object.rowid">
-                                        <img :src="object.allImgUrl[0]" alt="">
+                                        <img src="../img/zhan_img_c.jpg" :onload="onloadImg(object.allImgUrl[0])" alt="">
                                         <div class="dang">
                                             <h3>{{object.newTitle}}</h3>
                                             <p>{{object.newContont | readMore(50, '...')}}</p>
@@ -109,7 +110,7 @@
                         <ul>
                             <li v-for="object in listObject.zuanHuoList">
                                 <a :href="'/trainPC/html/detail.html?type=5&rowId='+object.rowid">
-                                    <img :src="object.allImgUrl[0]" alt="">
+                                    <img src="../img/zhan_img_c.jpg" :onload="onloadImg(object.allImgUrl[0])" alt="">
                                     <p>{{object.newTitle}}</p>
                                 </a>
                             </li>
@@ -143,7 +144,7 @@
                             <template v-if="listObject.huoDongList.length > 0">
                                 <li v-for="object in listObject.huoDongList">
                                     <a :href="'/trainPC/html/active_detail.html?type=6&rowId='+object.rowid">
-                                        <img :src="object.newsImagess[0].imgSrc" alt="">
+                                        <img src="../img/zhan_img_c.jpg" :onload="onloadImg(object.newsImagess[0].imgSrc)"  alt="">
                                         <p>{{object.albumTitle}}</p>
                                     </a>
                                 </li>

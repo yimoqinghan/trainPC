@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
+    <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
     <title>活动相册</title>
 </head>
 <body>
@@ -42,7 +43,7 @@
                     <ul class="picture_list" style="padding-top:30px;">
                         <li v-for="object in listData">
                             <a :href="'/trainPC/html/active_detail.html?type=6&rowId='+object.rowid">
-                                <img :src="object.newsImagess[0].imgSrc" alt="">
+                                <img src="../../img/zhan_img_c.jpg" :onload="onloadImg(object.newsImagess[0].imgSrc)"  alt="">
                                 <p style="margin-top:10px; ">{{object.albumTitle}}</p>
                                 <!-- <p>2019-05-18</p> -->
                             </a>
@@ -140,6 +141,11 @@
             } 
         },
         methods: {
+            onloadImg:function(imgSrc){
+                if(imgSrc){
+                    return 'this.onload=null;this.src='+'"'+imgSrc+'";'
+                }
+            },
             navMethod:function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },

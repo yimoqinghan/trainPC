@@ -41,8 +41,15 @@ var vue = new Vue({
                 url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn="+type+"&page=1&size="+size,
                 method:"GET",
             }).then(function(res){
-                console.log("d",objectName)
                 if(res.data.code == 200){
+                    if(res.data.data.length >0){
+                        for(var i=0;i<res.data.data.length;i++){
+                            if(res.data.data[i].allImgUrl.length <= 0 && res.data.data[i].imgSrc != ""){
+                                res.data.data[i].allImgUrl.push(res.data.data[i].imgSrc);
+                            }
+                        }
+                    }
+                    console.log("res.data.data",res.data.data)
                     that.listObject[objectName] = res.data.data;
                         var swiper = new Swiper('.swiper-container', {
                             spaceBetween: 30,

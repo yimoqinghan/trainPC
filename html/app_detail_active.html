@@ -33,23 +33,30 @@
     </style>
 </head>
 <body>
-<div class="box_container">
-</div>
+<div class="box_container"></div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
     function getNewsDetail(newsId){
-            $.ajax({
-                type:"GET",
-                url:'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+newsId,
-                dataType : "json",
-                success:function(res){
-                    if(res.code == 200){
-                        var dataObject = res.data.tagContent;
-                        $(".box_container").append(dataObject);
+        $.ajax({
+            type:"GET",
+            url:'http://106.14.183.96/red-caragana-railway/album/queryAlbumImagesContent.do?rowid='+newsId,
+            dataType : "json",
+            success:function(res){
+                if(res.code == 200){
+                    var dataObject = res.data;
+                    if(dataObject.length >0){
+                        var ulE = "<ul class='imgList'></ul>";
+                        $(".box_container").append(ulE);
+                        for(var i=0;i<dataObject.length;i++){
+                            var img = "<li><img src='"+dataObject[i].imgSrc+"' /></li>";
+                            $(".box_container ul").append(img);
+                        }
                     }
+                    $(".box_container").append(dataObject);
                 }
-            })
+            }
+        })
     }
         
 </script>

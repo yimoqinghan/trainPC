@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/dangJianYaoWen/list.css">
@@ -38,9 +39,16 @@
                     <a>详情</a>
                 </p>
                 <!--<div class="content_title">专题活动</div>-->
-                <div class="dang_content" v-html="detailObject">
-
-                </div>
+                <h2 v-if="detailObject.newTitle">{{detailObject.newTitle}}</h2>
+                <p style="text-align:center;"  v-if="detailObject.newsName">
+                    <span>发布人：</span> 
+                    <span>{{detailObject.newsName}}</span>
+                </p>
+                <p style="text-align:center;" v-if="detailObject.newsTime">
+                    <span>发布时间:</span>
+                    <span>{{detailObject.newsTime}}</span>
+                </p> 
+                <div class="dang_content" v-html="detailObject.tagContent"></div>
             </div>
         </div>
         <!--右侧栏-->
@@ -91,6 +99,7 @@
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/polyfill.min.js"></script>
 <script src="../js/axios.js"></script>
 <script src="../js/qs.js"></script>
 <script src="../js/vue.js"></script>
@@ -127,7 +136,7 @@
                 url: 'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+rowId,
             }).then(function(res){
                 if(res.data.code == 200){
-                    that.detailObject = res.data.data.tagContent;
+                    that.detailObject = res.data.data;
                     console.log("that.detailObject",that.detailObject)
                 }
             }).catch(function(error){

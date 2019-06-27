@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
     <title>首页</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/swiper.min.css">
@@ -31,24 +32,32 @@
         <div class="sec_content">
             <!--内容区域-->
             <div class="row">
-                <h2><a :href="'/trainPC/html/detail.html?type=&rowId='+listObject.hotList[0].rowid">{{listObject.hotList[0].newTitle}}</a></h2>
+                <h2>
+                    <template v-if="listObject.hotList.length > 0">
+                            <a :href="'/trainPC/html/detail.html?type=&rowId='+listObject.hotList[0].rowid">{{listObject.hotList[0].newTitle}}</a>
+                    </template>
+                </h2>
                 <div class="ad_img_wrap">
                     <!--左侧轮播-->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-if="index>0"  v-for="object,index in listObject.hotList" :key="index">
-                                <a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">
-                                    <img :src="object.imgSrc" alt="">
-                                    <p class="swiper-text">{{object.newTitle}}</p>
-                                </a>
-                            </div>
+                            <template v-if="listObject.hotList.length > 0">
+                                <div class="swiper-slide" v-if="index>0"  v-for="object,index in listObject.hotList" :key="index">
+                                    <a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">
+                                        <img :src="object.allImgUrl[0]" alt="">
+                                        <p class="swiper-text">{{object.newTitle}}</p>
+                                    </a>
+                                </div>
+                            </template>
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
                     <!--右侧广告-->
                     <ul class="ad_list">
-                        <li v-for="object in listObject.hotList"><a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">{{object.newTitle}}</a></li>
+                        <template v-if="listObject.hotList.length > 0">
+                            <li v-if="index>0" v-for="(object,index) in listObject.hotList"><a :href="'/trainPC/html/detail.html?type=&rowId='+object.rowid">{{object.newTitle}}</a></li>
+                        </template>
                     </ul>
                 </div>
                 <!--内容板块-->
@@ -59,17 +68,20 @@
                             <a href="/trainPC/html/jiTuanXinWen/list.html">更多>></a>
                         </div>
                         <div class="left_content_wrap">
-                            <div class="img_wrap">
-                                <a :href="'/trainPC/html/detail.html?type=0&rowId='+listObject.jiTuanNews[0].rowid" >
-                                    <img :src="listObject.jiTuanNews[0].imgSrc" alt="">
-                                    <p>{{listObject.jiTuanNews[0].newTitle}}</p>
-                                </a>
-                            </div>
-                            <ul>
-                                <li v-if="index>0"  v-for="newObject,index in listObject.jiTuanNews">
-                                    <a :href="'/trainPC/html/detail.html?type=0&rowId='+newObject.rowid" >{{newObject.newTitle}}</a>
-                                </li>
-                            </ul>
+                            <template v-if="listObject.jiTuanNews.length > 0">
+                                <div class="img_wrap">
+                                        <a :href="'/trainPC/html/detail.html?type=0&rowId='+listObject.jiTuanNews[0].rowid" >
+                                            <img :src="listObject.jiTuanNews[0].allImgUrl[0]" alt="">
+                                            <p>{{listObject.jiTuanNews[0].newTitle}}</p>
+                                        </a>
+                                    
+                                </div>
+                                <ul>
+                                    <li v-if="index>0"  v-for="newObject,index in listObject.jiTuanNews">
+                                        <a :href="'/trainPC/html/detail.html?type=0&rowId='+newObject.rowid" >{{newObject.newTitle}}</a>
+                                    </li>
+                                </ul>
+                            </template>
                         </div>
                     </div>
                     <div class="right_content_box">
@@ -78,29 +90,33 @@
                             <a href="/trainPC/html/dangJianYaoWen/list.html">更多>></a>
                         </div>
                         <ul class="right_list">
-                            <li v-for="object in listObject.dJList">
-                                <a :href="'/trainPC/html/detail.html?type=1&rowId='+object.rowid">
-                                    <img :src="object.imgSrc" alt="">
-                                    <div class="dang">
-                                        <h3>{{object.newTitle}}</h3>
-                                        <p>{{object.newContont}}</p>
-                                    </div>
-                                </a>
-                            </li>
+                            <template v-if="listObject.dJList.length > 0">
+                                <li v-for="object in listObject.dJList">
+                                    <a :href="'/trainPC/html/detail.html?type=1&rowId='+object.rowid">
+                                        <img :src="object.allImgUrl[0]" alt="">
+                                        <div class="dang">
+                                            <h3>{{object.newTitle}}</h3>
+                                            <p>{{object.newContont}}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </template>
                         </ul>
                     </div>
                 </div>
                 <!--图片广告位-->
                 <div class="center_img_wrap">
-                    <a class="more_active" href="/trainPC/html/zhuanTiHuoDong/list.html">更多>></a>
-                    <ul>
-                        <li v-for="object in listObject.zuanHuoList">
-                            <a :href="'/trainPC/html/detail.html?type=5&rowId='+object.rowid">
-                                <img :src="object.imgSrc" alt="">
-                                <p>{{object.newTitle}}</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <template v-if="listObject.zuanHuoList.length > 0">
+                        <a class="more_active" href="/trainPC/html/zhuanTiHuoDong/list.html">更多>></a>
+                        <ul>
+                            <li v-for="object in listObject.zuanHuoList">
+                                <a :href="'/trainPC/html/detail.html?type=5&rowId='+object.rowid">
+                                    <img :src="object.allImgUrl[0]" alt="">
+                                    <p>{{object.newTitle}}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </template>
                 </div>
                 <!--支部动态和活动相册-->
                 <div class="zhibu_active_wrap">
@@ -110,12 +126,14 @@
                             <a href="/trainPC/html/zhiBuDongTai/list.html">更多>></a>
                         </div>
                         <ul class="zhibu_ul">
-                            <li v-for="object in listObject.zBList">
-                                <a :href="'/trainPC/html/detail.html?type=2&rowId='+object.rowid">
-                                    <span>{{object.organizationTitle}}</span>
-                                    <span>{{object.organizationTime}}</span>
-                                </a>
-                            </li>
+                            <template v-if="listObject.zBList.length > 0">
+                                <li v-for="object in listObject.zBList">
+                                    <a :href="'/trainPC/html/detail.html?type=2&rowId='+object.rowid">
+                                        <span>{{object.organizationTitle}}</span>
+                                        <span style="text-align: left;">{{object.organizationTime}}</span>
+                                    </a>
+                                </li>
+                            </template>
                         </ul>
                     </div>
                     <div class="active_wrap active_picture_wrap">
@@ -124,13 +142,14 @@
                             <a href="/trainPC/html/huoDongXiangCe/list.html">更多>></a>
                         </div>
                         <ul>
-                            <li v-for="object in listObject.huoDongList">
-                                <a :href="'/trainPC/html/active_detail.html?type=6&rowId='+object.rowid">
-                                    <img :src="object.newsImagess[0].imgSrc" alt="">
-                                    <p>{{object.albumTitle}}</p>
-                                </a>
-                                
-                            </li>
+                            <template v-if="listObject.huoDongList.length > 0">
+                                <li v-for="object in listObject.huoDongList">
+                                    <a :href="'/trainPC/html/active_detail.html?type=6&rowId='+object.rowid">
+                                        <img :src="object.newsImagess[0].imgSrc" alt="">
+                                        <p>{{object.albumTitle}}</p>
+                                    </a>
+                                </li>
+                            </template>
                         </ul>
                     </div>
                 </div>
@@ -142,12 +161,14 @@
                             <a href="/trainPC/html/fanFuChangLian/list.html">更多>></a>
                         </div>
                         <ul class="zhibu_ul">
-                            <li v-for="object in listObject.fanFuList">
-                                <a :href="'/trainPC/html/detail.html?type=3&rowId='+object.rowid">
-                                    <span>{{object.newTitle}}</span>
-                                    <span>{{object.newsTime}}</span>
-                                </a>
-                            </li>
+                            <template v-if="listObject.fanFuList.length > 0">
+                                <li v-for="object in listObject.fanFuList">
+                                    <a :href="'/trainPC/html/detail.html?type=3&rowId='+object.rowid">
+                                        <span>{{object.newTitle}}</span>
+                                        <span style="text-align: left;">{{object.newsTime}}</span>
+                                    </a>
+                                </li>
+                            </template>
                         </ul>
                     </div>
                     <div class="active_wrap">
@@ -156,12 +177,14 @@
                             <a href="/trainPC/html/zhuanTiJiaoYu/list.html">更多>></a>
                         </div>
                         <ul class="zhibu_ul">
-                            <li v-for="object in listObject.zuanTiList">
-                                <a :href="'/trainPC/html/detail.html?type=4&rowId='+object.rowid">
-                                    <span>{{object.newTitle}}</span>
-                                    <span>{{object.newsTime}}</span>
-                                </a>
-                            </li>
+                            <template v-if="listObject.zuanTiList.length > 0">
+                                <li v-for="object in listObject.zuanTiList">
+                                    <a :href="'/trainPC/html/detail.html?type=4&rowId='+object.rowid">
+                                        <span>{{object.newTitle}}</span>
+                                        <span style="text-align: left;">{{object.newsTime}}</span>
+                                    </a>
+                                </li>
+                            </template>
                         </ul>
                     </div>
                 </div>
@@ -215,6 +238,7 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/swiper.min.js"></script>
+<script src="../js/polyfill.min.js"></script>
 <script src="../js/axios.js"></script>
 <script src="../js/qs.js"></script>
 <script src="../js/vue.js"></script>

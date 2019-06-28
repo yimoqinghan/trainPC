@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>积分排名</title>
+    <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/sanhuiyike.css">
+    <style>
+        .row img{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box_container" id="jifen">
+        <img src="../img/top_bg_img.jpg" alt="" class="nav_bg">
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="responsive-navbar">
+                    <ul class="nav navbar-nav">
+                        <li :class="{active:index == 8}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href">{{navObject.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="sec_content">
+            <!--内容区域-->
+            <div class="row">
+                <img src="/img/wo_jifen.jpg" />
+            </div>
+            <!--右侧栏-->
+            <div class="sec_right">
+                <ul class="list">   
+                    <!-- <li><a>站内搜索</a></li> -->
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
+                </ul>
+                <!-- <div class="center_fix" style="background-color: #e9e9e9;">
+                    <p class="message_num">3条信息</p>
+                    <ul>
+                        <li><a>·6月28日支部党员大会</a></li>
+                        <li><a>·6月28日支部党员大会</a></li>
+                        <li><a>·6月28日支部党员大会</a></li>
+                    </ul>
+                    <a href="/html/zhiBuDongTai/list.html">更多>></a>
+                </div> -->
+                <div class="er_wrap">
+                    <img src="../img/xuexi_we.jpg" />
+                    <p>下载党建云APP</p>
+                    <img src="../img/xuexi_we.jpg" alt="">
+                    <p>下载学习强国APP</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_list">
+                <span>友情链接</span>
+                <ul>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="http://www.dangjian.cn/">党建网</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="http://www.shccig.com/">陕煤集团</a></li>
+                    <li><a target="_blank" href="http://www.shrlig.com/">铁路物流公司</a></li>
+                </ul>
+            </div>
+            <div class="footer_img">
+                <img src="../img/footer_bg.jpg" alt="">
+            </div>
+            <p class="footer_text">中共陕西红柠铁路有限公司委员会</p>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/axios.js"></script>
+<script src="../js/qs.js"></script>
+<script src="../js/vue.js"></script>
+<script>
+var vue = new Vue({
+    el:"#jifen",
+    data:{
+        nav_list:[ {name:"党建宣传",href:"/trainPC/html/index.html"},
+                    {name:"活动相册",href:"/trainPC/html/huoDongXiangCe/list.html"},
+                    {name:"支部动态",href:"/trainPC/html/zhiBuDongTai/list.html"},
+                    {name:"微党课",href:"/trainPC/html/demo/weidangke.html"},
+                    {name:"干部管理",href:"/trainPC/html/demo/ganbuguanli.html"},
+                    {name:"党建考核",href:"/trainPC/html/demo/dangjiankaohe.html"},
+                    {name:"支部考评",href:"/trainPC/html/zhikao.html"},
+                    {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
+                    {name:"积分排名",href:"/trainPC/html/jifen.html"},
+                    {name:"学习强国",href:"https://www.xuexi.cn/"}],
+    },
+    methods:{
+        navMethod:function (index) {
+            $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
+        }
+    }
+});
+</script>
+</html>

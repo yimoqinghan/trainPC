@@ -1,0 +1,110 @@
+.sec_content{
+    width:1000px;
+    margin:0 auto;
+}
+.sec_content .row{
+    width:100%;
+}
+h2.title{
+    font-size:24px;
+    color:black;
+    text-align: left;
+    width:100%;
+    padding:20px 0 15px;
+    border-bottom:2px solid #db0507;
+    margin:0;
+    font-weight: 700;
+}
+.public_btn{
+    width:100%;
+    margin-top:35px;
+    text-align: left;
+}
+.public_btn a{
+    text-align: center;
+    text-decoration:none;
+    color:#fff;
+    background-color: #db0507;
+    display: inline-block;
+    padding:12px 15px;
+    border-radius:8px;
+    font-size:18px;
+}
+.san_nav_list{
+    list-style-type:none;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    border-bottom:1px solid #ccc;
+    margin-top:45px;
+}
+.san_nav_list li{
+    font-size:18px;
+    color:#ccc;
+    float:left;
+    margin-left:54px;
+    padding-bottom:10px;
+}
+.san_nav_list li.active{
+    color:#db0507;
+    border-bottom:1px solid #db0507;
+}
+.san_conten_list{
+    list-style-type:none;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+.san_conten_list li{
+    width:100%;
+    overflow: hidden;
+    border-bottom:1px solid #ccc;
+    padding:35px 76px  30px 30px;
+}
+.san_conten_list li img{
+    float:left;
+    width:255px;
+    height:185px;
+    vertical-align: middle;
+}
+.san_conten_list li .right{
+    float:left;
+    width:460px;
+    margin-left:25px;
+    vertical-align: middle;
+}
+.san_conten_list li .right h3{
+    font-size:22px;
+    color:black;
+    font-weight:700;
+    margin-top:15px;
+}
+.san_conten_list li .right p{
+    font-size:16px;
+    color:#ccc;
+    text-align: left;
+    margin-top:15px;
+    
+}
+.right_btn{
+    float:right;
+    height:100%;
+    vertical-align: middle;
+    text-align: center;
+    margin-top:100px;
+}
+.right_btn span{
+    display: inline-block;
+    font-size:16px;
+    text-align: center
+}
+.right_btn span:first-child{
+    color:#3c5994;
+    margin-right:20px;
+}
+.right_btn span:last-child{
+    color:red;
+    margin-left:20px;
+}

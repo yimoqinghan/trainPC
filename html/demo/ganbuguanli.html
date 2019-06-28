@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link rel="icon" type="image/x-icon" href="../../img/bitbug_favicon.ico"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
+    <link rel="stylesheet" href="../../css/sikasa.css">
+    <title>干部管理</title>
+</head>
+
+<body>
+    <div class="box_container" id="gB">
+        <img src="../../img/top_bg_img.jpg" alt="" class="nav_bg">
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="responsive-navbar">
+                    <ul class="nav navbar-nav">
+                        <li :class="{active:index == 4 }" @mouseenter="navMethod(index)"
+                            v-for="navObject,index in nav_list" :key="index"><a
+                                :href="navObject.href">{{navObject.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="sec_content">
+            <div class="row" style="background-color: #fff;border-bottom: 1px solid red;">
+                <div style="max-width: 1000px;margin: 0 auto;text-align: left;">
+                    <div style=" font-size: 24px;padding: 40px 0px 20px 0px;font-weight: bold;">干部管理</div>
+                    <div style="border:2px solid red;margin:0 auto;"></div>
+                    <div style="margin-top:20px;">
+                        <div class="ganbuNav">
+                            <span class="active">花名册管理</span>
+                            <span>干部培训</span>
+                            <span>干部考核</span>
+                            <span>考核结果</span>
+                            <span>年度考核表导出</span>
+                        </div>
+                    </div>
+                    <div class="sclearfix" style="margin: 30px 0px 15px 0px;">
+                        <button type="button" class="btn btn-danger" style="float:right;">添加记录</button>
+                        <button type="button" class="btn btn-danger" style="margin-right:20px;float:right;">查询</button>
+                        <input class="form-control" style="width:200px;margin-right:20px;float: right">
+                    </div>
+                    <div class="stable">
+                        <table class="table table-bordered">
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>籍贯</th>
+                            <th>出生年月</th>
+                            <th>参加工作时间</th>
+                            <th>入党时间</th>
+                            <th>学历学位</th>
+                            <th>毕业院校</th>
+                            <th>技术职称</th>
+                            <th>职业资格</th>
+                            <th>现任职务及时间</th>
+                            <th>操作</th>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>王志刚</td>
+                                <td>男</td>
+                                <td>陕西省西安市</td>
+                                <td>1975-05-02</td>
+                                <td>1982-07-03</td>
+                                <td>1982-07-03</td>
+                                <td>本科</td>
+                                <td>西安科技大学</td>
+                                <td>工程师</td>
+                                <td>无</td>
+                                <td>主任&nbsp;2008-08-08</td>
+                                <td>
+                                    <a class="btn ">修改</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="text-align: right;margin:20px;" class="sPage">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--右侧栏-->
+            <div class="sec_right">
+                <ul class="list">
+                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
+                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
+                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
+                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
+                </ul>
+                <!-- <div class="center_fix" style="background-color: #e9e9e9;">
+                <p class="message_num">3条信息</p>
+                <ul>
+                    <li><a>·6月28日支部党员大会</a></li>
+                    <li><a>·6月28日支部党员大会</a></li>
+                    <li><a>·6月28日支部党员大会</a></li>
+                </ul>
+                <a>更多>></a>
+            </div> -->
+                <div class="er_wrap">
+                    <img src="../../img/xuexi_we.jpg" />
+                    <p>下载党建云APP</p>
+                    <img src="../../img/xuexi_we.jpg" alt="">
+                    <p>下载学习强国APP</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer" style="margin: 0;">
+            <div class="footer_list">
+                <span>友情链接</span>
+                <ul>
+                        <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                        <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                        <li><a target="_blank" href="http://www.dangjian.cn/">党建网</a></li>
+                        <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                        <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                        <li><a target="_blank" href="http://www.shccig.com/">陕煤集团</a></li>
+                        <li><a target="_blank" href="http://www.shrlig.com/">铁路物流公司</a></li>
+                </ul>
+            </div>
+            <div class="footer_img">
+                <img src="../../img/footer_bg.jpg" alt="">
+            </div>
+            <p class="footer_text">中共陕西红柠铁路有限公司委员会</p>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/polyfill.min.js"></script>
+<script src="../../js/axios.js"></script>
+<script src="../../js/qs.js"></script>
+<script src="../../js/vue.js"></script>
+<script src="../../js/MyPage.js"></script>
+<script>
+    var vue = new Vue({
+        el: "#gB",
+        data: {
+            nav_list:[ {name:"党建宣传",href:"/trainPC/html/index.html"},
+                    {name:"活动相册",href:"/trainPC/html/huoDongXiangCe/list.html"},
+                    {name:"支部动态",href:"/trainPC/html/zhiBuDongTai/list.html"},
+                    {name:"微党课",href:"/trainPC/html/demo/weidangke.html"},
+                    {name:"干部管理",href:"/trainPC/html/demo/ganbuguanli.html"},
+                    {name:"党建考核",href:"/trainPC/html/demo/dangjiankaohe.html"},
+                    {name:"支部考评",href:"/trainPC/html/zhikao.html"},
+                    {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
+                    {name:"积分排名",href:"/trainPC/html/jifen.html"},
+                    {name:"学习强国",href:"https://www.xuexi.cn/"}],
+        },
+        methods: {
+            navMethod: function (index) {
+                $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
+            },
+        },
+    })
+</script>
+
+</html>

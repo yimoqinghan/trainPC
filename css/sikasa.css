@@ -1,0 +1,130 @@
+.sclearfix {
+  overflow: auto;
+  _height: 1%;
+}
+
+.stable .table > tbody > tr > td,
+.stable .table > tbody > tr > th,
+.stable .table > tfoot > tr > td,
+.stable .table > tfoot > tr > th,
+.stable .table > thead > tr > td,
+.stable .table > thead > tr > th {
+  text-align: center;
+  padding: 15px;
+}
+
+.stable .table > tbody > tr > td:last-child,
+.stable .table > tfoot > tr > td:last-child,
+.stable .table > thead > tr > td:last-child {
+  color: #db0507;
+}
+
+.stable .form-control option {
+  -webkit-appearance: none; /* google */
+  -moz-appearance: none; /* firefox */
+  appearance: none; /* IE */
+  padding: 10px;
+}
+.stable .form-control option:hover {
+  background-color: #db0507;
+}
+
+.stable .form-control:focus {
+  border-color: #db0507;
+}
+
+.stable .btn {
+  padding: 0px;
+}
+
+.stable .table > tbody > tr > td,
+.stable .table > tbody > tr > th,
+.stable .table > tfoot > tr > td,
+.stable .table > tfoot > tr > th,
+.stable .table > thead > tr > td,
+.stable .table > thead > tr > th {
+  vertical-align: middle;
+}
+
+.sPage .pagination > li > a,
+.sPage .pagination > li > span {
+  color: black;
+}
+
+.sPage .pagination > li > a:hover,
+.sPage .pagination > li > span:hover {
+  background-color: #db0507;
+  color: white;
+}
+
+/*  ganbu */
+.ganbuNav {
+  height: 60px;
+  line-height: 60px;
+  background-color: #f5f5f6;
+  text-align: center;
+}
+.ganbuNav span.active {
+  background-color: #db0507;
+  border-radius: 15px;
+  color: white;
+}
+
+.ganbuNav span {
+  display: inline-block;
+  margin: 0px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 7px;
+  color: black;
+}
+
+.ganbuNav span:hover {
+  background-color: #db0507;
+  border-radius: 15px;
+  color: white;
+}
+
+/* weidangke */
+.weidangke {
+  /* border: 2px solid transparent; */
+  text-align: left;
+  /* width: 320px; */
+}
+
+.weidangke:hover {
+  /* border: 2px solid red;
+  cursor: pointer; */
+}
+
+/*  个人 */
+
+.gerenleft {
+  padding-top: 38px;
+  float: left;
+  font-weight: bold;
+}
+
+.gerenleft div {
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px 0px;
+}
+.gerenleft div.active {
+  background-color: #db0507;
+  color: white;
+}
+.gerenleft div:hover {
+  background-color: #db0507;
+  color: white;
+}
+
+.gerenright {
+  float: right;
+  width: 890px;
+  margin: 40px auto 0px;
+  text-align: left;
+}

@@ -60,10 +60,10 @@
         <div class="sec_right">
             <ul class="list">
                 <!-- <li><a>站内搜索</a></li> -->
-                <li><a>我的学习</a></li>
-                <li><a>我的考试</a></li>
-                <li><a>我的积分</a></li>
-                <li><a>我的信息</a></li>
+                <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
             </ul>
             <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
@@ -114,14 +114,16 @@
     var vue = new Vue({
         el:"#fF",
         data:{
-            nav_list:[ {name:"党建宣传",href:""},
-                    {name:"活动相册",href:""},
-                    {name:"支部动态",href:""},
-                    {name:"微党课",href:""},
-                    {name:"干部管理",href:""},
-                    {name:"党建考核",href:""},
-                    {name:"支部考评",href:""},
-                    {name:"学习强国",href:""}],
+            nav_list:[ {name:"党建宣传",href:"/trainPC/html/index.html"},
+                    {name:"活动相册",href:"/trainPC/html/huoDongXiangCe/list.html"},
+                    {name:"支部动态",href:"/trainPC/html/zhiBuDongTai/list.html"},
+                    {name:"微党课",href:"/trainPC/html/demo/weidangke.html"},
+                    {name:"干部管理",href:"/trainPC/html/demo/ganbuguanli.html"},
+                    {name:"党建考核",href:"/trainPC/html/demo/dangjiankaohe.html"},
+                    {name:"支部考评",href:"/trainPC/html/zhikao.html"},
+                    {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
+                    {name:"积分排名",href:"/trainPC/html/jifen.html"},
+                    {name:"学习强国",href:"https://www.xuexi.cn/"}],
             listData:[],
             page:0,
             p_size:10,

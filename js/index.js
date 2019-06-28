@@ -24,10 +24,18 @@ var vue = new Vue({
                     hotList:[],
                     zuanHuoList:[],
         },
-        token:"eyJhbGciOiJIUzUxMiJ9.eyJhY2Nlc3NfdG9rZW4iOm51bGwsInVzZXJpZCI6IjE3MDAwMDgwIiwiZXhwaXJlc19pbiI6bnVsbH0._-PGHYezIg87gaXG6G_88y8bQGgqh-6UfIFSxABf7QNMQ279btYiWvDzeEMJd6O2yWwaCxHC8LeqA1_5GD38Fw",
+        // token:"",
         guoNeiYaoWen:[],
     },
     mounted:function(){
+        // if(window.location.href.indexOf("?USER_TOKEN") != -1){
+        //     var href_url = this.getId()["USER_TOKEN"];
+        //     this.token = href_url;
+        //     window.localStorage.setItem("token",href_url);
+        // };
+        // if(window.localStorage.getItem("token")){
+        //     this.token = window.localStorage.getItem("token");
+        // };
         this.newsListShow("hotList",4,6);
         this.newsListShow("jiTuanNews",2,7);
         this.newsListShow("dJList",3,6);
@@ -61,26 +69,27 @@ var vue = new Vue({
              
             });
         },
+        getId:function(){
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        },
         /*新闻列表*/
         newsListShow:function (objectName,type,size) {
-            
             var that = this;
-            // $.ajax({
-            //     type:"get",
-            //     url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn="+type+"&page=1&size="+size,
-            //     beforeSend:function(xhr) {
-            //         xhr.setRequestHeader('Authorization','Bearer '+that.token);
-            //     },
-            //     success:function(res){
-            //             console.log(res);
-            //     }
-            // })
             axios({
                 url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn="+type+"&page=1&size="+size,
                 method:"GET",
-                headers:{
-                    "token":"eyJhbGciOiJIUzUxMiJ9.eyJhY2Nlc3NfdG9rZW4iOm51bGwsInVzZXJpZCI6IjE3MDAwMDgwIiwiZXhwaXJlc19pbiI6bnVsbH0._-PGHYezIg87gaXG6G_88y8bQGgqh-6UfIFSxABf7QNMQ279btYiWvDzeEMJd6O2yWwaCxHC8LeqA1_5GD38Fw",
-                }
+                // headers:{
+                //     authorization:that.token,
+                // }
             }).then(function(res){
                 if(res.data.code == 200){
                     if(res.data.data.length >0){
@@ -113,6 +122,9 @@ var vue = new Vue({
             axios({
                 url:"http://106.14.183.96/red-caragana-railway/organization/getOrganizationList.do?page=1&size="+size,
                 method:"GET",
+                // headers:{
+                //     authorization:that.token,
+                // }
             }).then(function(res){
                 if(res.data.code == 200){
                     that.listObject.zBList = res.data.data;
@@ -129,6 +141,9 @@ var vue = new Vue({
             axios({
                 url:"http://106.14.183.96/red-caragana-railway/album/getAlbumList.do?page=1&size="+size,
                 method:"GET",
+                // headers:{
+                //     authorization:that.token,
+                // }
             }).then(function(res){
                 if(res.data.code == 200){
                     that.listObject.huoDongList = res.data.data;

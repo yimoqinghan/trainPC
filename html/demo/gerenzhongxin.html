@@ -123,6 +123,7 @@
                     {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
                     {name:"积分排名",href:"/trainPC/html/jifen.html"},
                     {name:"学习强国",href:"https://www.xuexi.cn/"}],
+            // token:"",
            
         },
         created:function(){
@@ -136,11 +137,36 @@
             }else if(href.indexOf("?wodejifen") != -1){
                 this.isShow = "2";
             }
+            // if(window.location.href.indexOf("?USER_TOKEN") != -1){
+            //     var href_url = this.getId()["USER_TOKEN"];
+            //     this.token = href_url;
+            //     window.localStorage.setItem("token",href_url);
+            // };
         },
         methods: {
             clickNav(num) {
                 this.isShow = num;
             },
+            getId:function(){
+                var url = location.search; //获取url中"?"符后的字串
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for(var i = 0; i < strs.length; i ++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            },
+            // axFn:function(){
+            //     axios({
+            //         url:"http://106.14.183.96/red-caragana-railway/auth/PcAuthLogin.do?newsColumn="+type+"&page=1&size="+size,
+            //         method:"GET",
+            //     }).then(function(res){
+            //         console.log(res);
+            //     })
+            // },
             navMethod: function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },

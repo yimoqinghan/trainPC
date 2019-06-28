@@ -127,17 +127,22 @@
             {name:"专题活动",fileName:"zhuanTiHuoDong"},
             {name:"活动相册",fileName:"huoDongXiangCe"}],
             detailObject:"",
+            // token:"",
             newsType:"",
         },
         created:function () {
             var that = this;
             this.navMethod();
+            // this.token = window.localStorage.getItem("token");
             var rowId = that.getId()["rowId"];
             this.newsType = that.getId()["type"];
             var new_url='http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+rowId;
             axios({
                 method: 'GET',
                 url:new_url,
+                // headers:{
+                //     authorization:that.token,
+                // }
             }).then(function(res){
                 if(res.data.code == 200){
                     that.detailObject = res.data.data;

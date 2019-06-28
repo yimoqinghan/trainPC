@@ -154,17 +154,22 @@
                     {name:"积分排名",href:"/trainPC/html/jifen.html"},
                     {name:"学习强国",href:"https://www.xuexi.cn/"}],
             detailObject:"",
+            // token:"",
             newsType:"",
         },
         created:function () {
             var that = this;
             this.navMethod();
+            // this.token = window.localStorage.getItem("token");
             var rowId = that.getId()["rowId"];
             this.newsType = that.getId()["type"];
             console.log(rowId)
             axios({
                 method: 'GET',
                 url: 'http://106.14.183.96/red-caragana-railway/album/queryAlbumImagesContent.do?rowid='+rowId,
+                // headers:{
+                //     authorization:that.token,
+                // }
             }).then(function(res){
                 if(res.data.code == 200){
                     that.detailObject = res.data.data;

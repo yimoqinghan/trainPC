@@ -25,6 +25,7 @@ var vue = new Vue({
                     zuanHuoList:[],
         },
         token:"",
+        username:"",
         guoNeiYaoWen:[],
         active_index:0,
     },
@@ -34,6 +35,9 @@ var vue = new Vue({
             this.token = href_url;
             window.localStorage.setItem("token",href_url);
         };
+        if(window.localStorage.getItem("username")){
+            this.username = window.localStorage.getItem("username");
+        }
         if(window.localStorage.getItem("token")){
             this.token = window.localStorage.getItem("token");
         };
@@ -112,11 +116,11 @@ var vue = new Vue({
                     }
                     that.listObject[objectName] = res.data.data;
                 }else if(res.data.code == "421"){
-                    // window.location.href="/trainPC/html/404.html";
+                    window.location.href="/trainPC/html/404.html";
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){
-                // window.location.href="/trainPC/html/404.html";
+                window.location.href="/trainPC/html/404.html";
             })
         },
         //支部动态列表获取
@@ -125,18 +129,18 @@ var vue = new Vue({
             axios({
                 url:"http://106.14.183.96/red-caragana-railway/organization/getOrganizationList.do?page=1&size="+size,
                 method:"GET",
-                // headers:{
-                //     authorization:that.token,
-                // }
+                headers:{
+                     authorization:that.token,
+                 }
             }).then(function(res){
                 if(res.data.code == 200){
                     that.listObject.zBList = res.data.data;
                 }else if(res.data.code == "421"){
-                    // window.location.href="/trainPC/html/404.html";
+                    window.location.href="/trainPC/html/404.html";
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){
-                // window.location.href="/trainPC/html/404.html";
+                window.location.href="/trainPC/html/404.html";
             })
         },
         //活动相册列表获取
@@ -153,11 +157,11 @@ var vue = new Vue({
                 if(res.data.code == 200){
                     that.listObject.huoDongList = res.data.data;
                 }else if(res.data.code == "421"){
-                    // window.location.href="/trainPC/html/404.html";
+                    window.location.href="/trainPC/html/404.html";
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){
-                // window.location.href="/trainPC/html/404.html";
+               window.location.href="/trainPC/html/404.html";
             })
         },
         navMethod:function (index) {

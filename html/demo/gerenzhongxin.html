@@ -45,13 +45,18 @@
             margin-bottom:25px;
             font-size:14px;
         }
+        .tt{
+            text-align-last:justify;
+            text-align:justify;
+            text-justify:distribute-all-lines;
+        }
     </style>
 </head>
 
 <body>
     <div class="box_container" id="gR">
         <img src="../../img/top_bg_img.jpg" alt="" class="nav_bg">
-        <span class="usr_top" v-if="username != ''"><a href="/trainPC/html/demo/gerenzhongxin.html">哈喽，{{username}}</a></span>
+        <span class="usr_top" v-if="username != ''"><a href="/trainPC/html/demo/gerenzhongxin.html">你好，{{username}}</a></span>
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
@@ -63,7 +68,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="responsive-navbar" @mouseleave="navMethodFocus()">
                         <ul class="nav navbar-nav">
-                                <li :class="{active:index == 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index">
+                                <li :class="{active:index == 11}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index">
                                     <a v-if="navObject.name != '学习强国'" :href="navObject.href" >{{navObject.name}}</a>
                                     <a v-else="navObject.name == '学习强国'" target="_blank" :href="navObject.href" >{{navObject.name}}</a>
                                 </li>
@@ -74,14 +79,14 @@
         <div class="sec_content">
             <div class="row sclearfix"
                 style="width:1000px;margin:0 auto;border-bottom: 1px solid red;">
-                <div class="gerenleft" style="background-color:#fff;">
+                <div class="gerenleft" style="background-color:#fff;padding-top:0;margin-top:38px;">
                     <div @click="clickNav('1')" :class="[isShow == 1 ? 'active' : '']">党员信息</div>
                     <div @click="clickNav('2')" :class="[isShow == 2 ? 'active' : '']">我的积分</div>
                     <div @click="clickNav('3')" :class="[isShow == 3 ? 'active' : '']">我的学习</div>
                     <div @click="clickNav('4')" :class="[isShow == 4 ? 'active' : '']">我的考试</div>
                     <div @click="clickNav('5')" :class="[isShow == 5 ? 'active' : '']">我的消息</div>
                 </div>
-                <div class="gerenright" style="background-color: #fff;">
+                <div class="gerenright" style="background-color: #fff;margin-left: 30px;width:845px;">
                     <!-- <div style="width: 800px;margin: 0 auto;text-align: left;">
                         <div style=" font-size: 24px;padding: 40px 0px 20px 0px;font-weight: bold;">我的积分</div>
                         <div style="border:2px solid red;margin:0 auto;"></div>
@@ -97,15 +102,15 @@
                                     <span class="dd">{{dataObject.}}</span>
                                  </p> -->
                                  <p>
-                                    <span class="tt">工号：</span>
+                                    <span class="tt">工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
                                     <span class="dd">{{dataObject.username}}</span>
                                 </p>
                                 <p>
-                                    <span class="tt">性别：</span>
+                                    <span class="tt">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
                                     <span class="dd">{{dataObject.usersex}}</span>
                                 </p>
                                 <p>
-                                    <span class="tt">民族：</span>
+                                    <span class="tt">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族：</span>
                                     <span class="dd">{{dataObject.usermz}}</span>
                                 </p>
                                 <p>
@@ -125,7 +130,7 @@
                                         <span class="dd">{{dataObject.usersfzh}}</span>
                                 </p>
                                 <p>
-                                    <span class="tt">手机号：</span>
+                                    <span class="tt">手&nbsp;&nbsp;机&nbsp;&nbsp;号：</span>
                                     <span class="dd">{{dataObject.userph}}</span>
                                 </p>
                                 <p>
@@ -216,7 +221,7 @@
                     {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
                     {name:"积分排名",href:"/trainPC/html/jifen.html"},
                     {name:"学习强国",href:"https://www.xuexi.cn/"}],
-            active_index:0,
+            active_index:11,
             token:"",
             username:"",
             dataObject:{},
@@ -274,9 +279,9 @@
                 }).then(function(res){
                    if(res.data.code == 200){
                         that.dataObject = res.data.data;
-                        for(var x in dataObject){
-                            if(dataObject[x] == null || dataObject[x] == ""){
-                                dataObject[x] = "暂无数据";
+                        for(var x in that.dataObject){
+                            if(that.dataObject[x] == null || that.dataObject[x] == ""){
+                                that.dataObject[x] = "暂无数据";
                             }
                         }
                    }
@@ -286,7 +291,9 @@
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },
             navMethodFocus:function(){
-                $(".navbar-nav li").eq(this.active_index).addClass("active").siblings().removeClass("active");
+                $(".navbar-nav li").each(function(){
+                    $(this).removeClass("active");
+                })
             }
         },
     })

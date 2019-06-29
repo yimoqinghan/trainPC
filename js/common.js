@@ -5,3 +5,10 @@ Vue.filter('readMore', function (text, length, suffix) {
             return text;
         }
 })
+Vue.prototype.transformTime=function(text){
+    if(text.indexOf(" ") != -1){
+        return text.split(" ")[0];
+    }else{
+        return text;
+    }
+}

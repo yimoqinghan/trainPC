@@ -135,7 +135,7 @@
                                 <li v-for="object in listObject.zBList">
                                     <a :href="'/trainPC/html/zhi_detail.html?type=2&rowId='+object.rowid">
                                         <span>{{object.organizationTitle}}</span>
-                                        <span style="text-align: left;">{{object.organizationTime}}</span>
+                                        <span style="text-align: left;">{{transformTime(object.organizationTime)}}</span>
                                     </a>
                                 </li>
                             </template>
@@ -170,7 +170,7 @@
                                 <li v-for="object in listObject.fanFuList">
                                     <a :href="'/trainPC/html/detail.html?type=3&rowId='+object.rowid">
                                         <span>{{object.newTitle}}</span>
-                                        <span style="text-align: left;">{{object.newsTime}}</span>
+                                        <span style="text-align: left;">{{transformTime(object.newsTime)}}</span>
                                     </a>
                                 </li>
                             </template>
@@ -186,7 +186,7 @@
                                 <li v-for="object in listObject.zuanTiList">
                                     <a :href="'/trainPC/html/detail.html?type=4&rowId='+object.rowid">
                                         <span>{{object.newTitle}}</span>
-                                        <span style="text-align: left;">{{object.newsTime}}</span>
+                                        <span style="text-align: left;">{{transformTime(object.newsTime)}}</span>
                                     </a>
                                 </li>
                             </template>

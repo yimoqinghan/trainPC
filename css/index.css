@@ -388,12 +388,12 @@ ul.zhibu_ul li span{
 }
 ul.zhibu_ul li span:first-child{
     float:left;
-    width:63%;
+    width:76%;
     text-align:left;
 }
 ul.zhibu_ul li span:last-child{
     float:right;
-    width:30%;
+    width:17%;
     text-align:right;
 }
 .active_picture_wrap ul{

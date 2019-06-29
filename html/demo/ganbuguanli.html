@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <link rel="icon" type="image/x-icon" href="../../img/bitbug_favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../../img/bitbug_favicon.ico" />
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
     <link rel="stylesheet" href="../../css/sikasa.css">
-    <title>干部管理</title>
+    <title>红柠铁路智慧党建平台</title>
 </head>
 
 <body>
@@ -25,12 +25,13 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="collapse navbar-collapse" id="responsive-navbar">
-                    <ul class="nav navbar-nav">
-                        <li :class="{active:index == 4 }" @mouseenter="navMethod(index)"
-                            v-for="navObject,index in nav_list" :key="index"><a
-                                :href="navObject.href">{{navObject.name}}</a></li>
-                    </ul>
+                <div class="collapse navbar-collapse" id="responsive-navbar" @mouseleave="navMethodFocus()">
+                        <ul class="nav navbar-nav">
+                                <li :class="{active:index == 4}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index">
+                                    <a v-if="navObject.name != '学习强国'" :href="navObject.href" >{{navObject.name}}</a>
+                                    <a v-else="navObject.name == '学习强国'" target="_blank" :href="navObject.href" >{{navObject.name}}</a>
+                                </li>
+                            </ul>
                 </div>
             </div>
         </nav>
@@ -55,7 +56,7 @@
                     </div>
                     <div class="stable">
                         <table class="table table-bordered">
-                            <th>姓名</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                             <th>性别</th>
                             <th>籍贯</th>
                             <th>出生年月</th>
@@ -72,237 +73,237 @@
                                 <td>男</td>
                                 <td>陕西省西安市</td>
                                 <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1995-07-12</td>
+                                <td>1995-05-01</td>
                                 <td>本科</td>
                                 <td>西安科技大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2008-09-09</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>彭万里</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1973-05-12</td>
+                                <td>1995-06-01</td>
+                                <td>1995-02-02</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>北京理工大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2009-11-09</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>谢大海</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1981-01-02</td>
+                                <td>2002-05-02</td>
+                                <td>2004-11-02</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>中国矿业大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2010-09-11</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>程孝先</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1971-03-02</td>
+                                <td>1992-11-11</td>
+                                <td>1995-01-06</td>
                                 <td>本科</td>
                                 <td>西安科技大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2013-05-23</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>关仁</td>
                                 <td>男</td>
-                                <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>陕西省宝鸡市</td>
+                                <td>1972-11-12</td>
+                                <td>1997-03-12</td>
+                                <td>1999-05-22</td>
                                 <td>本科</td>
                                 <td>西安科技大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2010-06-19</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>孙顺达</td>
                                 <td>男</td>
-                                <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>陕西省安康市</td>
+                                <td>1973-05-03</td>
+                                <td>1993-01-01</td>
+                                <td>1998-05-16</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>中国矿业大学</td>
                                 <td>工程师</td>
-                                <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>有</td>
+                                <td>主任&nbsp;2000-01-01</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
-                                <td>男</td>
-                                <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>孙青</td>
+                                <td>女</td>
+                                <td>陕西省咸阳市</td>
+                                <td>1985-01-13</td>
+                                <td>2007-05-13</td>
+                                <td>2004-05-02</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>华东理工大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2004-11-23</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
-                                <td>男</td>
-                                <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>孙硕晨</td>
+                                <td>女</td>
+                                <td>陕西省榆林市</td>
+                                <td>1980-07-06</td>
+                                <td>2003-01-02</td>
+                                <td>2006-11-30</td>
                                 <td>本科</td>
                                 <td>西安科技大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2008-09-13</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>孙凯</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1975-10-01</td>
+                                <td>1997-12-13</td>
+                                <td>1999-05-14</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>中国矿业大学</td>
                                 <td>工程师</td>
-                                <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>有</td>
+                                <td>主任&nbsp;1999-01-17</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>刘长胜</td>
                                 <td>男</td>
-                                <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>陕西省榆林市</td>
+                                <td>1971-12-02</td>
+                                <td>1995-07-02</td>
+                                <td>1997-05-11</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>背景科技大学</td>
                                 <td>工程师</td>
-                                <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>有</td>
+                                <td>主任&nbsp;2008-12-01</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>罗元发</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
                                 <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1997-01-01</td>
+                                <td>1996-05-02</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>华东理工大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2008-05-19</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>孙天民</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1971-11-22</td>
+                                <td>1994-12-22</td>
+                                <td>1996-11-11</td>
                                 <td>本科</td>
                                 <td>西安科技大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;2007-03-17</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>赵德荣</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1983-05-21</td>
+                                <td>2003-06-02</td>
+                                <td>2001-04-02</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>北京科技大学</td>
                                 <td>工程师</td>
-                                <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>有</td>
+                                <td>主任&nbsp;2001-11-18</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>李书诚</td>
                                 <td>男</td>
-                                <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>陕西省铜川市</td>
+                                <td>1977-03-01</td>
+                                <td>1998-05-18</td>
+                                <td>1999-12-03</td>
                                 <td>本科</td>
-                                <td>西安科技大学</td>
+                                <td>西北大学</td>
                                 <td>工程师</td>
                                 <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>主任&nbsp;1999-12-09</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>王志刚</td>
+                                <td>冯兴国</td>
                                 <td>男</td>
                                 <td>陕西省西安市</td>
-                                <td>1975-05-02</td>
-                                <td>1982-07-03</td>
-                                <td>1982-07-03</td>
+                                <td>1971-12-11</td>
+                                <td>1991-11-03</td>
+                                <td>1996-07-07</td>
                                 <td>本科</td>
                                 <td>西安科技大学</td>
                                 <td>工程师</td>
-                                <td>无</td>
-                                <td>主任&nbsp;2008-08-08</td>
+                                <td>有</td>
+                                <td>主任&nbsp;2001-08-03</td>
                                 <td>
                                     <a class="btn ">修改</a>
                                 </td>
@@ -335,10 +336,10 @@
             <!--右侧栏-->
             <div class="sec_right">
                 <ul class="list">
-                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
-                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
-                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
-                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的消息</a></li>
                 </ul>
                 <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
@@ -350,7 +351,7 @@
                 <a>更多>></a>
             </div> -->
                 <div class="er_wrap">
-                    <img src="../../img/xuexi_we.jpg" />
+                    <img src="../../img/dangjianyun_we.jpg" />
                     <p>下载党建云APP</p>
                     <img src="../../img/xuexi_we.jpg" alt="">
                     <p>下载学习强国APP</p>
@@ -361,13 +362,13 @@
             <div class="footer_list">
                 <span>友情链接</span>
                 <ul>
-                        <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
-                        <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
-                        <li><a target="_blank" href="http://www.dangjian.cn/">党建网</a></li>
-                        <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
-                        <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
-                        <li><a target="_blank" href="http://www.shccig.com/">陕煤集团</a></li>
-                        <li><a target="_blank" href="http://www.shrlig.com/">铁路物流公司</a></li>
+                    <li><a target="_blank" href="http://www.people.com.cn/">人民网</a></li>
+                    <li><a target="_blank" href="http://cpc.people.com.cn/">中国共产党新闻网</a></li>
+                    <li><a target="_blank" href="http://www.dangjian.cn/">党建网</a></li>
+                    <li><a target="_blank" href="http://www.xinhuanet.com/">新华网</a></li>
+                    <li><a target="_blank" href="https://www.xuexi.cn/">学习强国</a></li>
+                    <li><a target="_blank" href="http://www.shccig.com/">陕煤集团</a></li>
+                    <li><a target="_blank" href="http://www.shrlig.com/">铁路物流公司</a></li>
                 </ul>
             </div>
             <div class="footer_img">
@@ -388,21 +389,25 @@
     var vue = new Vue({
         el: "#gB",
         data: {
-            nav_list:[ {name:"党建宣传",href:"/trainPC/html/index.html"},
-                    {name:"活动相册",href:"/trainPC/html/huoDongXiangCe/list.html"},
-                    {name:"支部动态",href:"/trainPC/html/zhiBuDongTai/list.html"},
-                    {name:"微党课",href:"/trainPC/html/demo/weidangke.html"},
-                    {name:"干部管理",href:"/trainPC/html/demo/ganbuguanli.html"},
-                    {name:"党建考核",href:"/trainPC/html/demo/dangjiankaohe.html"},
-                    {name:"支部考评",href:"/trainPC/html/zhikao.html"},
-                    {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
-                    {name:"积分排名",href:"/trainPC/html/jifen.html"},
-                    {name:"学习强国",href:"https://www.xuexi.cn/"}],
+            nav_list: [{ name: "党建宣传", href: "/trainPC/html/index.html" },
+                    { name: "活动相册", href: "/trainPC/html/huoDongXiangCe/list.html" },
+                    { name: "支部动态", href: "/trainPC/html/zhiBuDongTai/list.html" },
+                    { name: "微党课", href: "/trainPC/html/demo/weidangke.html" },
+                    { name: "干部管理", href: "/trainPC/html/demo/ganbuguanli.html" },
+                    { name: "党建考核", href: "/trainPC/html/demo/dangjiankaohe.html" },
+                    { name: "支部考评", href: "/trainPC/html/zhikao.html" },
+                    { name: "三会一课", href: "/trainPC/html/sanhuiyike.html" },
+                    { name: "积分排名", href: "/trainPC/html/jifen.html" },
+                    { name: "学习强国", href: "https://www.xuexi.cn/" }],
+            active_index:4,
         },
         methods: {
             navMethod: function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },
+            navMethodFocus:function(){
+                $(".navbar-nav li").eq(this.active_index).addClass("active").siblings().removeClass("active");
+            }
         },
     })
 </script>

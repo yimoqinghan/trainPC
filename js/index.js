@@ -26,6 +26,7 @@ var vue = new Vue({
         },
         // token:"",
         guoNeiYaoWen:[],
+        active_index:0,
     },
     mounted:function(){
         // if(window.location.href.indexOf("?USER_TOKEN") != -1){
@@ -37,9 +38,9 @@ var vue = new Vue({
         //     this.token = window.localStorage.getItem("token");
         // };
         this.newsListShow("hotList",4,6);
-        this.newsListShow("jiTuanNews",2,7);
+        this.newsListShow("jiTuanNews",2,6);
         this.newsListShow("dJList",3,6);
-        this.getzhiBuData(10);
+        this.getzhiBuData(9);
         this.getHuoDongData(6);
         this.newsListShow("fanFuList",5,7);
         this.newsListShow("zuanTiList",9,7);
@@ -155,6 +156,10 @@ var vue = new Vue({
         },
         navMethod:function (index) {
             $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
+        },
+        navMethodFocus:function(){
+            console.log(this.active_index)
+            $(".navbar-nav li").eq(this.active_index).addClass("active").siblings().removeClass("active");
         }
     }
 })

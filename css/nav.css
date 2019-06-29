@@ -16,6 +16,10 @@
     color: #fff;
     background-color: #f64547;
 }
+/* .navbar-inverse .navbar-nav>.hover_active>a{
+    color: #fff;
+    background-color: #b30a0d;
+} */
 .swiper-pagination-bullet-active{
     background:#fff;
 }
@@ -107,11 +111,13 @@
     width:100%;
     background-color: #ffffff;
     margin-top:20px;
-    padding-top:55px;
+    padding-top:44px;
 }
 .footer_list{
     width: 100%;
     text-align: center;
+    background-color: red;
+    padding:10px;
 }
 .footer_list span{
     display: inline-block;
@@ -140,6 +146,9 @@
     cursor: pointer;
     text-decoration: none;
 }
+.footer ul li a:hover{
+    color:#fff;
+}
 .footer_img{
     width: 100%;
     margin:30px auto 0;
@@ -153,7 +162,7 @@
     font-size:20px;
     color:black;
     text-align: center;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 .sec_right .list li a:hover{
     color:#fff;

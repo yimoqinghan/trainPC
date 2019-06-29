@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
-    <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
-    <title>活动相册</title>
+    <link rel="icon" type="image/x-icon" href="../../img/bitbug_favicon.ico"/>
+    <title>红柠铁路智慧党建平台</title>
 </head>
 <body>
 <div class="box_container" id="hD">
@@ -22,10 +22,13 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="responsive-navbar">
-                <ul class="nav navbar-nav">
-                    <li :class="{active:index <= 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href">{{navObject.name}}</a></li>
-                </ul>
+            <div class="collapse navbar-collapse" id="responsive-navbar" @mouseleave="navMethodFocus()">
+                    <ul class="nav navbar-nav">
+                            <li :class="{active:index == 1}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index">
+                                <a v-if="navObject.name != '学习强国'" :href="navObject.href" >{{navObject.name}}</a>
+                                <a v-else="navObject.name == '学习强国'" target="_blank" :href="navObject.href" >{{navObject.name}}</a>
+                            </li>
+                        </ul>
             </div>
         </div>
     </nav>
@@ -43,7 +46,8 @@
                     <ul class="picture_list" style="padding-top:30px;">
                         <li v-for="object in listData">
                             <a :href="'/trainPC/html/active_detail.html?type=6&rowId='+object.rowid">
-                                <img src="../../img/zhan_img_c.jpg" :onload="onloadImg(object.newsImagess[0].imgSrc)"  alt="">
+                                <!-- <img src="../../img/zhan_img_c.jpg" :onload="onloadImg(object.newsImagess[0].imgSrc)"  alt=""> -->
+                                <img :src="object.newsImagess[0].imgSrc"   alt="">
                                 <p style="margin-top:10px; ">{{object.albumTitle}}</p>
                                 <!-- <p>2019-05-18</p> -->
                             </a>
@@ -60,7 +64,7 @@
                 <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
                     <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
                     <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
-                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的消息</a></li>
             </ul>
             <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
@@ -72,7 +76,7 @@
                 <a>更多>></a>
             </div> -->
             <div class="er_wrap">
-                <img src="../../img/xuexi_we.jpg" />
+                <img src="../../img/dangjianyun_we.jpg" />
                 <p>下载党建云APP</p>
                 <img src="../../img/xuexi_we.jpg" alt="">
                 <p>下载学习强国APP</p>
@@ -124,8 +128,9 @@
             listData:[],
             // token:"",
             page:0,
-            p_size:4,
+            p_size:8,
             totalPage:0,
+            active_index:1,
         },
         mounted:function(){
             // this.token = window.localStorage.getItem("token");
@@ -150,6 +155,9 @@
                     return 'this.onload=null;this.src='+'"'+imgSrc+'";'
                 }
             },
+            navMethodFocus:function(){
+                $(".navbar-nav li").eq(this.active_index).addClass("active").siblings().removeClass("active");
+            },
             navMethod:function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },
@@ -165,6 +173,15 @@
                     if(res.data.code == 200){
                         that.listData = res.data.data;
                         that.totalPage = res.data.total;
+                        if(that.listData.length>0){
+                            for(var i=o;i<that.listData.length;i++){
+                                if(that.listData[i].newsImagess.length > 0){
+                                    if(that.listData[i].newsImagess[0].imgSrc == "" || that.listData[i].newsImagess[0].imgSrc==null){
+                                        that.listData[i].newsImagess[0].imgSrc = "../../img/zhan_img_c.jpg";
+                                    }
+                                }
+                            }
+                        }
                     }
                     /*that.dangJianNews*/
                 }).catch(function(err){

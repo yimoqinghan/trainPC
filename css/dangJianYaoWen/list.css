@@ -17,6 +17,12 @@ html,body{
     margin-right:0;
     margin-left:0;
 }
+.detail.row .dang_list_wrap{
+    text-align: -webkit-auto;
+}
+h2.newTitle{
+    text-align: center;
+}
 .navbar-inverse{
     margin:0;
 }
@@ -107,13 +113,14 @@ html,body{
 .dang_ul_list li img{
     float:left;
     width:117px;
-    height:100px;
+    height:90px;
     margin-right:15px;
+    margin-top:2px;
 }
 .dang_ul_list li .right{
     float:left;
     width:348px;
-    height:100px;
+    height:93px;
 }
 .dang_ul_list li .right h3{
     color:black;

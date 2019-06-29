@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,7 @@
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
     <link rel="stylesheet" href="../../css/sikasa.css">
-    <title>微党课</title>
+    <title>红柠铁路智慧党建平台</title>
 </head>
 
 <body>
@@ -25,12 +24,13 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="collapse navbar-collapse" id="responsive-navbar">
-                    <ul class="nav navbar-nav">
-                        <li :class="{active:index == 3}" @mouseenter="navMethod(index)"
-                            v-for="navObject,index in nav_list" :key="index"><a
-                                :href="navObject.href">{{navObject.name}}</a></li>
-                    </ul>
+                <div class="collapse navbar-collapse" id="responsive-navbar" @mouseleave="navMethodFocus()">
+                        <ul class="nav navbar-nav">
+                                <li :class="{active:index == 3}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index">
+                                    <a v-if="navObject.name != '学习强国'" :href="navObject.href" >{{navObject.name}}</a>
+                                    <a v-else="navObject.name == '学习强国'" target="_blank" :href="navObject.href" >{{navObject.name}}</a>
+                                </li>
+                            </ul>
                 </div>
             </div>
         </nav>
@@ -54,12 +54,8 @@
                         </div>
                         <div>课程简介：本课件分为三十个专题，全面、系统、深入阐述了习近平新时代中国特色主义思想的重大意义、科学体系、丰富内涵、精神实质，实践要求</div>
                         <div></div> -->
-                        <img src="../../img/weidangke.png" alt="" style="width: 320px;padding:15px;">
-                        <img src="../../img/weidangke.png" alt="" style="width: 320px;padding:15px;">
-                        <img src="../../img/weidangke.png" alt="" style="width: 320px;padding:15px;">
-                        <img src="../../img/weidangke.png" alt="" style="width: 320px;padding:15px;">
-                        <img src="../../img/weidangke.png" alt="" style="width: 320px;padding:15px;">
-                        <img src="../../img/weidangke.png" alt="" style="width: 320px;padding:15px;">
+                        <img src="../../img/weidangke.png" alt="" style="width: 100%;padding:15px;">
+                        
                     </div>
                     <div style="text-align: right;margin:20px;" class="sPage">
                         <nav aria-label="Page navigation">
@@ -90,7 +86,7 @@
                         <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
                         <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
                         <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
-                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
+                        <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的消息</a></li>
                 </ul>
                 <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
@@ -102,7 +98,7 @@
                 <a>更多>></a>
             </div> -->
                 <div class="er_wrap">
-                    <img src="../../img/xuexi_we.jpg" />
+                    <img src="../../img/dangjianyun_we.jpg" />
                     <p>下载党建云APP</p>
                     <img src="../../img/xuexi_we.jpg" alt="">
                     <p>下载学习强国APP</p>
@@ -150,11 +146,15 @@
                     {name:"三会一课",href:"/trainPC/html/sanhuiyike.html"},
                     {name:"积分排名",href:"/trainPC/html/jifen.html"},
                     {name:"学习强国",href:"https://www.xuexi.cn/"}],
+            active_index:3,
         },
         methods: {
             navMethod: function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
             },
+            navMethodFocus:function(){
+                $(".navbar-nav li").eq(this.active_index).addClass("active").siblings().removeClass("active");
+            }
         },
     })
 </script>

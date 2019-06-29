@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
     <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
-    <title>专题教育</title>
+    <title>红柠铁路智慧党建平台</title>
 </head>
 <body>
 <div class="box_container" id="zT">
@@ -22,17 +22,13 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="responsive-navbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="">党建宣传</a></li>
-                    <li><a href="">活动相册</a></li>
-                    <li><a href="">支部动态</a></li>
-                    <li><a href="">微党课</a></li>
-                    <li><a href="">干部管理</a></li>
-                    <li><a href="">党建考核</a></li>
-                    <li><a href="">支部考评</a></li>
-                    <li><a href="">学习强国</a></li>
-                </ul>
+            <div class="collapse navbar-collapse" id="responsive-navbar" @mouseleave="navMethodFocus()">
+                    <ul class="nav navbar-nav">
+                            <li :class="{active:index == 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index">
+                                <a v-if="navObject.name != '学习强国'" :href="navObject.href" >{{navObject.name}}</a>
+                                <a v-else="navObject.name == '学习强国'" target="_blank" :href="navObject.href" >{{navObject.name}}</a>
+                            </li>
+                        </ul>
             </div>
         </div>
     </nav>
@@ -70,7 +66,7 @@
                 <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexuexi">我的学习</a></li>
                     <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodekaoshi">我的考试</a></li>
                     <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodejifen">我的积分</a></li>
-                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的信息</a></li>
+                    <li><a href="/trainPC/html/demo/gerenzhongxin.html?wodexinxi">我的消息</a></li>
             </ul>
             <!-- <div class="center_fix" style="background-color: #e9e9e9;">
                 <p class="message_num">3条信息</p>
@@ -82,7 +78,7 @@
                 <a>更多>></a>
             </div> -->
             <div class="er_wrap">
-                <img src="../../img/xuexi_we.jpg" />
+                <img src="../../img/dangjianyun_we.jpg" />
                 <p>下载党建云APP</p>
                 <img src="../../img/xuexi_we.jpg" alt="">
                 <p>下载学习强国APP</p>
@@ -136,6 +132,7 @@
             page:0,
             p_size:10,
             totalPage:0,
+            active_index:0,
         },
         mounted:function(){
             // this.token = window.localStorage.getItem("token");
@@ -162,6 +159,9 @@
             },
             navMethod:function (index) {
                 $(".navbar-nav li").eq(index).addClass("active").siblings().removeClass("active");
+            },
+            navMethodFocus:function(){
+                $(".navbar-nav li").eq(this.active_index).addClass("active").siblings().removeClass("active");
             },
             getData:function(page,size){
                 var that = this;

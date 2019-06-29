@@ -124,7 +124,7 @@ html,body{
     overflow: hidden;
     width:1000px;
     margin:20px auto 22px;
-    height:470px;
+    height:430px;
 }
 .left_content_box{
     width:282.5px;
@@ -148,6 +148,11 @@ html,body{
     text-align: inherit;
     overflow: hidden;
 }
+.huodogn{
+    width:1000px;
+    margin:0 auto;
+    background-color: #f5f5f6;
+}
 .left_content_title span{
     color:#db0507;
     float: left;
@@ -168,10 +173,13 @@ html,body{
     vertical-align: middle;
     padding-top:16px;
 }
+.left_content_title a:hover{
+    color:blue;
+}
 .left_content_wrap{
     width:100%;
-    padding:18px 20px 0;
-    height:436px;
+    padding:20px 20px 0;
+    height:385px;
     background-color: #fff;
 }
 .left_content_wrap img{
@@ -198,12 +206,15 @@ html,body{
 .left_content_wrap ul li a{
         color:black;
 }
+.left_content_wrap ul li a:hover{
+    color:blue;
+}
 .left_content_wrap ul li:first-child{
     padding-top: 13px;
 }
 .img_wrap{
     width:100%;
-    height:200px;
+    height:187px;
     position: relative;
 }
 .img_wrap p{
@@ -226,20 +237,20 @@ html,body{
     background-color: #fff;
     list-style-type: none;
     overflow: hidden;
-    padding:25px 20px 16px;
-    height:425px;
+    padding:30px 20px 16px;
+    height:385px;
     margin:0;
 }
 .right_list li{
     float:left;
     width:50%;
-    min-height:115px;
+    min-height:100px;
     overflow: hidden;
     margin-bottom:17px;
 }
 .right_list li img{
     width:112px;
-    height:100px;
+    height:87px;
     float:left;
 }
 .right_list li .dang{
@@ -319,8 +330,8 @@ html,body{
     font-size:14px;
     color:#919191;
     position: absolute;
-    right:19px;
-    bottom:8px;
+    right:25px;
+    top:8px;
     cursor: pointer;
 }
 /*支部和活动相册*/
@@ -347,7 +358,7 @@ ul.zhibu_ul{
     padding:0;
     margin:0;
     background-color: #ffffff;
-    height:357px;
+    height:324px;
 }
 ul.zhibu_ul li{
     padding:13px 20px 0 20px;
@@ -358,9 +369,10 @@ ul.zhibu_ul li{
 }
 ul.zhibu_ul li a{
     color:black;
+    text-decoration:underline;
 }
 ul.zhibu_ul li a:hover{
-    color:black;
+    color:blue;
 }
 ul.zhibu_ul li:first-child{
     padding-top:22px;
@@ -376,20 +388,21 @@ ul.zhibu_ul li span{
 }
 ul.zhibu_ul li span:first-child{
     float:left;
-    width:75%;
+    width:63%;
     text-align:left;
 }
 ul.zhibu_ul li span:last-child{
     float:right;
-    width:24%;
+    width:30%;
     text-align:right;
 }
 .active_picture_wrap ul{
     list-style-type: none;
     overflow: hidden;
     width: 100%;
+    height:324px;
     margin:0;
-    padding:25px 20px 0;
+    padding:20px 20px 0;
     background-color: #ffffff;
 }
 .active_picture_wrap ul li{
@@ -402,16 +415,24 @@ ul.zhibu_ul li span:last-child{
 }
 .active_picture_wrap ul li img{
     width:100%;
-    height:118px;
+    height:103px;
 }
 .active_picture_wrap ul li p{
     width:100%;
     text-align: center;
     margin:0;
-    margin-top:10px;
+    margin-top:12px;
     padding:0;
     font-size:14px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.active_picture_wrap ul li a{
     color:black;
+}
+.active_picture_wrap ul li a:hover{
+    color:blue;
 }
 
 .swiper-slide a{

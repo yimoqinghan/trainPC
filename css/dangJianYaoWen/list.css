@@ -219,17 +219,20 @@ h2.newTitle{
     display:inline-block;
     font-size:16px;
     color:#333333;
+    /* overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap; */
+}
+.zhi_list li span:first-child{
+    float:left;
+    width:360px;
+    text-align: left;
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
 }
-.zhi_list li span:first-child{
-    float:left;
-    width:380px;
-    text-align: left;
-}
 .zhi_list li span:last-child{
     float:right;
-    width:75px;
+    width:95px;
     text-align: right;
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/dangJianYaoWen/list.css">
-    <link rel="icon" type="image/x-icon" href="../img/bitbug_favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../../img/bitbug_favicon.ico"/>
     <title>红柠铁路智慧党建平台</title>
 </head>
 <body>
@@ -47,7 +47,7 @@
                         <li v-for="object,index in listData">
                             <a :href="'/trainPC/html/zhi_detail.html?type=2&rowId='+object.rowid">
                                 <span>{{object.organizationTitle}}</span>
-                                <span>{{object.organizationTime}}</span>
+                                <span>{{transformTime(object.organizationTime)}}</span>
                             </a>
                         </li>
                     </ul>

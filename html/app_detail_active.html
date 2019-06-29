@@ -37,10 +37,14 @@
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
-    function getNewsDetail(newsId){
+    function getNewsDetail(object){
+        object = JSON.parse(object);
         $.ajax({
             type:"GET",
-            url:'http://106.14.183.96/red-caragana-railway/album/queryAlbumImagesContent.do?rowid='+newsId,
+            url:'http://106.14.183.96/red-caragana-railway/album/queryAlbumImagesContent.do?rowid='+object.id,
+            beforeSend:function(xhr) {
+                    xhr.setRequestHeader('authorization','Bearer '+object.token);
+            },
             dataType : "json",
             success:function(res){
                 if(res.code == 200){

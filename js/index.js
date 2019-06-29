@@ -24,7 +24,7 @@ var vue = new Vue({
                     hotList:[],
                     zuanHuoList:[],
         },
-        // token:"",
+        token:"",
         guoNeiYaoWen:[],
         active_index:0,
     },
@@ -88,9 +88,9 @@ var vue = new Vue({
             axios({
                 url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn="+type+"&page=1&size="+size,
                 method:"GET",
-                // headers:{
-                //     authorization:that.token,
-                // }
+                headers:{
+                     authorization:that.token,
+                }
             }).then(function(res){
                 if(res.data.code == 200){
                     if(res.data.data.length >0){
@@ -142,9 +142,9 @@ var vue = new Vue({
             axios({
                 url:"http://106.14.183.96/red-caragana-railway/album/getAlbumList.do?page=1&size="+size,
                 method:"GET",
-                // headers:{
-                //     authorization:that.token,
-                // }
+                headers:{
+                     authorization:that.token,
+                }
             }).then(function(res){
                 if(res.data.code == 200){
                     that.listObject.huoDongList = res.data.data;

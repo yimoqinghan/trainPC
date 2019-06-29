@@ -230,3 +230,21 @@
         padding-bottom:20px;
     }
 }
+.usr_top{
+    top: 23%;
+    font-size: 15px;
+    color: cornsilk;
+    position: absolute;
+    right: 15%;
+    display: inline-block;
+    background-color: rgba(246,167,88,.6);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.usr_top a{
+    color: cornsilk;
+}
+.usr_top a:hover{
+    color: blue;
+}

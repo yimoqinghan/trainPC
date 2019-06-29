@@ -29,14 +29,14 @@ var vue = new Vue({
         active_index:0,
     },
     mounted:function(){
-        // if(window.location.href.indexOf("?USER_TOKEN") != -1){
-        //     var href_url = this.getId()["USER_TOKEN"];
-        //     this.token = href_url;
-        //     window.localStorage.setItem("token",href_url);
-        // };
-        // if(window.localStorage.getItem("token")){
-        //     this.token = window.localStorage.getItem("token");
-        // };
+        if(window.location.href.indexOf("?USER_TOKEN") != -1){
+            var href_url = this.getId()["USER_TOKEN"];
+            this.token = href_url;
+            window.localStorage.setItem("token",href_url);
+        };
+        if(window.localStorage.getItem("token")){
+            this.token = window.localStorage.getItem("token");
+        };
         this.newsListShow("hotList",4,6);
         this.newsListShow("jiTuanNews",2,6);
         this.newsListShow("dJList",3,6);
@@ -111,10 +111,12 @@ var vue = new Vue({
                          });
                     }
                     that.listObject[objectName] = res.data.data;
+                }else if(res.data.code == "421"){
+                    // window.location.href="/trainPC/html/404.html";
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){
-
+                // window.location.href="/trainPC/html/404.html";
             })
         },
         //支部动态列表获取
@@ -129,10 +131,12 @@ var vue = new Vue({
             }).then(function(res){
                 if(res.data.code == 200){
                     that.listObject.zBList = res.data.data;
+                }else if(res.data.code == "421"){
+                    // window.location.href="/trainPC/html/404.html";
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){
-
+                // window.location.href="/trainPC/html/404.html";
             })
         },
         //活动相册列表获取
@@ -148,10 +152,12 @@ var vue = new Vue({
             }).then(function(res){
                 if(res.data.code == 200){
                     that.listObject.huoDongList = res.data.data;
+                }else if(res.data.code == "421"){
+                    // window.location.href="/trainPC/html/404.html";
                 }
                 /*that.dangJianNews*/
             }).catch(function(err){
-
+                // window.location.href="/trainPC/html/404.html";
             })
         },
         navMethod:function (index) {

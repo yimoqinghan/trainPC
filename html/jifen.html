@@ -18,6 +18,7 @@
 <body>
     <div class="box_container" id="jifen">
         <img src="../img/top_bg_img.jpg" alt="" class="nav_bg">
+        <span class="usr_top" v-if="username != ''"><a href="/trainPC/html/demo/gerenzhongxin.html">哈喽，{{username}}</a></span>
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
@@ -108,6 +109,12 @@ var vue = new Vue({
                     {name:"积分排名",href:"/trainPC/html/jifen.html"},
                     {name:"学习强国",href:"https://www.xuexi.cn/"}],
         active_index:8,
+        username:"",
+    },
+    mounted:function() {
+        if(window.localStorage.getItem("username")){
+                this.username = window.localStorage.getItem("username");
+        }
     },
     methods:{
         navMethod:function (index) {

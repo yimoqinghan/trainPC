@@ -13,6 +13,7 @@
 <body>
 <div class="box_container" id="jT">
     <img src="../../img/top_bg_img.jpg" alt="" class="nav_bg">
+    <span class="usr_top" v-if="username != ''"><a href="/trainPC/html/demo/gerenzhongxin.html">哈喽，{{username}}</a></span>
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -127,14 +128,18 @@
                     {name:"积分排名",href:"/trainPC/html/jifen.html"},
                     {name:"学习强国",href:"https://www.xuexi.cn/"}],
             listData:[],
-            // token:"",
+            token:"",
             page:0,
             p_size:10,
             totalPage:0,
             active_index:0,
+            username:"",
         },
         mounted:function(){
-            // this.token = window.localStorage.getItem("token");
+            if(window.localStorage.getItem("username")){
+                this.username = window.localStorage.getItem("username");
+            }
+            this.token = window.localStorage.getItem("token");
             this.getData(1,this.p_size);
         },
         watch: {
@@ -167,9 +172,9 @@
                 axios({
                     url:"http://106.14.183.96/red-caragana-railway/news/getNewsListA.do?newsColumn=2&page="+page+"&size="+size,
                     method:"GET",
-                    // headers:{
-                    //     authorization:that.token,
-                    // }
+                    headers:{
+                        authorization:that.token,
+                    }
                 }).then(function(res){
                     if(res.data.code == 200){
                         that.listData = res.data.data;
@@ -181,10 +186,12 @@
                             }
                         }
                         that.totalPage = res.data.total;
+                    }else if(res.data.code == "421"){
+                        // window.location.href="/trainPC/html/404.html";
                     }
                     /*that.dangJianNews*/
                 }).catch(function(err){
-
+                    // window.location.href="/trainPC/html/404.html";
                 })
             }
         },

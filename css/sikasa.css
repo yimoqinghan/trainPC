@@ -102,7 +102,7 @@
 /*  个人 */
 
 .gerenleft {
-  padding-top: 38px;
+  margin-top: 38px;
   float: left;
   font-weight: bold;
 }
@@ -124,7 +124,8 @@
 
 .gerenright {
   float: right;
-  width: 890px;
+  width: 845px;
   margin: 40px auto 0px;
+  margin-left:30px;
   text-align: left;
 }

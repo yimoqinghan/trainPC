@@ -30,30 +30,91 @@
             width:100%;
             margin-bottom:25px;
         }
+        .user,.time{
+            text-align:center;
+            font-size:16px;
+        }
+        .user{
+            padding-bottom:15px;
+        }
     </style>
 </head>
 <body>
 <div class="box_container">
+    <p class="user"></p>
+    <p class="time"></p>
 </div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
     function getNewsDetail(object){
-           object = JSON.parse(object);
+        var stf = JSON.parse(object);
+        if(stf.type.indexOf("支部动态") != -1){
             $.ajax({
                 type:"GET",
-                url:'http://106.14.183.96/red-caragana-railway/organization/getOrganizationByid.do?rowid='+object.id,
-                beforeSend:function(xhr) {
-                    xhr.setRequestHeader('authorization','Bearer '+object.token);
+                url:'http://106.14.183.96/red-caragana-railway/organization/getOrganizationByid.do?rowid='+stf.id,
+                headers:{
+                    'authorization':stf.token,
                 },
                 dataType : "json",
                 success:function(res){
                     if(res.code == 200){
                         var dataObject = res.data;
-                        $(".box_container").append(dataObject.organizationContont);
+                        if(dataObject){
+                            if(dataObject.organizationTime){
+                                var userEl = "<span>发布时间：</span><span>"+dataObject.organizationTime+"</span>";
+                                $(".time").append(userEl);
+                            }
+                            $(".box_container").append(dataObject.organizationContont);
+                        }else{
+                            var errEle = "<h3 style='text-align:center;margin-top:50px;'>暂无详情可以查看！</h3>"
+                            $(".box_container").append(errEle);
+                        }
+                    }else if(res.code == "421"){
+                        var errEle = "<h3 style='text-align:center;margin-top:50px;'>"+res.message+"</h3>"
+                        $(".box_container").append(errEle);
+                    }else{
+                        var errEle = "<h3 style='text-align:center;margin-top:50px;'>页面请求异常</h3>"
+                        $(".box_container").append(errEle);
                     }
                 }
             })
+        }else{
+            $.ajax({
+                type:"GET",
+                url:'http://106.14.183.96/red-caragana-railway/news/getNewsById.do?rowid='+stf.id,
+                headers:{
+                    'authorization':stf.token,
+                },
+                dataType : "json",
+                success:function(res){
+                    if(res.code == 200){
+                        var dataObject = res.data;
+                        if(dataObject){
+                            if(dataObject.newsName){
+                                var userEl = "<span>发布者：</span><span>"+dataObject.newsName+"</span>";
+                                $(".user").append(userEl);
+                            }
+                            if(dataObject.newsTime){
+                                var userEl = "<span>发布时间：</span><span>"+dataObject.newsTime+"</span>";
+                                $(".time").append(userEl);
+                            }
+                            $(".box_container").append(dataObject.tagContent);
+                        }else{
+                            var errEle = "<h3 style='text-align:center;margin-top:50px;'>暂无详情可以查看！</h3>"
+                            $(".box_container").append(errEle);
+                        }
+                    }else if(res.code == "421"){
+                        var errEle = "<h3 style='text-align:center;margin-top:50px;'>"+res.message+"</h3>"
+                        $(".box_container").append(errEle);
+                    }else{
+                        var errEle = "<h3 style='text-align:center;margin-top:50px;'>页面请求异常</h3>"
+                        $(".box_container").append(errEle);
+                    }
+                }
+            })
+        }
+            
     }
         
 </script>

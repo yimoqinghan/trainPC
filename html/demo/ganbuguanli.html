@@ -16,6 +16,7 @@
 <body>
     <div class="box_container" id="gB">
         <img src="../../img/top_bg_img.jpg" alt="" class="nav_bg">
+        <span class="usr_top" v-if="username != ''"><a href="/trainPC/html/demo/gerenzhongxin.html">哈喽，{{username}}</a></span>
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
@@ -36,8 +37,9 @@
             </div>
         </nav>
         <div class="sec_content">
-            <div class="row" style="background-color: #fff;border-bottom: 1px solid red;">
-                <div style="max-width: 1000px;margin: 0 auto;text-align: left;">
+            <div class="row" style="background-color: #fff;border-bottom: 1px solid red;padding:30px 0 40px;">
+                <img src="../../img/ganbu_new.jpg" style="width: 1000px;margin:0 auto;">
+                <!-- <div style="max-width: 1000px;margin: 0 auto;text-align: left;">
                     <div style=" font-size: 24px;padding: 40px 0px 20px 0px;font-weight: bold;">干部管理</div>
                     <div style="border:2px solid red;margin:0 auto;"></div>
                     <div style="margin-top:20px;">
@@ -331,7 +333,7 @@
                             </ul>
                         </nav>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--右侧栏-->
             <div class="sec_right">
@@ -400,6 +402,12 @@
                     { name: "积分排名", href: "/trainPC/html/jifen.html" },
                     { name: "学习强国", href: "https://www.xuexi.cn/" }],
             active_index:4,
+            username:"",
+        },
+        mounted:function(){
+            if(window.localStorage.getItem("username")){
+                this.username = window.localStorage.getItem("username");
+            }
         },
         methods: {
             navMethod: function (index) {

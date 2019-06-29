@@ -25,7 +25,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="responsive-navbar">
                     <ul class="nav navbar-nav">
-                        <li :class="{active:index == 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href">{{navObject.name}}</a></li>
+                        <li :class="{active:index == 0}" @mouseenter="navMethod(index)" v-for="navObject,index in nav_list" :key="index"><a :href="navObject.href" >{{navObject.name}}</a></li>
                     </ul>
                 </div>
             </div>

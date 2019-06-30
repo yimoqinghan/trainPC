@@ -5,9 +5,9 @@
 var vue = new Vue({
     el:"#indexBox",
     data:{
-        nav_list:[ {name:"党建宣传",href:"/trainPC/html/index.html"},
+        nav_list:[ {name:"新闻中心",href:"/trainPC/html/index.html"},
                     {name:"活动相册",href:"/trainPC/html/huoDongXiangCe/list.html"},
-                    {name:"支部动态",href:"/trainPC/html/zhiBuDongTai/list.html"},
+                    {name:"党建动态",href:"/trainPC/html/zhiBuDongTai/list.html"},
                     {name:"微党课",href:"/trainPC/html/demo/weidangke.html"},
                     {name:"干部管理",href:"/trainPC/html/demo/ganbuguanli.html"},
                     {name:"党建考核",href:"/trainPC/html/demo/dangjiankaohe.html"},
@@ -40,6 +40,11 @@ var vue = new Vue({
         }
         if(window.localStorage.getItem("token")){
             this.token = window.localStorage.getItem("token");
+        };
+        if(window.location.href.indexOf("username") != -1){
+            var userN = this.getId()["username"];
+            this.username = userN;
+            window.localStorage.setItem("username",userN);
         };
         this.newsListShow("hotList",4,6);
         this.newsListShow("jiTuanNews",2,6);
@@ -110,7 +115,7 @@ var vue = new Vue({
                                 that.guoNeiYaoWen.push(res.data.data[k]);
                            }
                         }
-                        that.$nextTick(() => { // 下一个UI帧再初始化swiper
+                        that.$nextTick(function(){ // 下一个UI帧再初始化swiper
                             that.initSwiper();
                          });
                     }

@@ -13,12 +13,9 @@ html,body{
 }
 .row{
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
     margin-right:0;
     margin-left:0;
-}
-.detail.row .dang_list_wrap{
-    text-align: -webkit-auto;
 }
 h2.newTitle{
     text-align: center;
